@@ -1,0 +1,15 @@
+@import '../scss/variables';
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+  overflow-x: hidden;
+  background-color: $bg-color;
+}
+
+.main-side-nav {
+  z-index: 2;
+  width: 200px;
+  //background: #fff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 30px #00000029;
+  background: transparent url('../assets/img/Component\ 77\ –\ 3.svg') 0% 0% no-repeat padding-box;
+}
