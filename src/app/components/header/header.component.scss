@@ -1,18 +1,86 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+@import '../../../scss/icons';
+
 a {
   text-decoration: none;
   color: white;
 }
 
-.label {
-  display: inline-block;
-  line-height: 30px;
-  margin: 0;
-  width: 85%;
-}
-
 .header {
-  height: 60px;
+  height: 3.625rem;
   background: #fff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 30px #00000029;
   border-radius: 0px 0px 80px 0px;
+
+  &__title, &__subtitle {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__title {
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+    font: $unnamed-font-style-normal normal bold 1rem Montserrat;
+    color: $unnamed-color-1b478e;
+    text-align: left;
+    letter-spacing: 1.68px;
+    text-transform: uppercase;
+
+  }
+
+  &__notifications {
+    @include text-with-icon;
+    gap: 16px;
+    mat-icon {
+      color: $unnamed-color-1b478e
+    }
+  }
+  &__subtitle {
+    // display: none;
+    font: $unnamed-font-style-normal normal medium 1rem Montserrat;
+    color: $unnamed-color-656565;
+    text-align: left;
+  }
+
+  &__back-btn  {
+    @include header-arrow-icon;
+  }
+
+  &__notifications  {
+    button {
+      @include header-arrow-icon;
+    }
+  }
+
+  &__left-bar {
+    border-right: 1px solid #D2D2D2;
+  }
+
+  &__user-info {
+    @include header-arrow-icon;
+    h5, h6 {
+      margin: 0;
+      padding: 0;
+      text-align: right;
+    }
+    &__username {
+      font: $unnamed-font-style-normal normal medium .625rem Montserrat;
+      color: $unnamed-color-349fa7;
+    }
+    &__role {
+      font: $unnamed-font-style-normal normal medium .5rem Montserrat;
+      color: $unnamed-color-1b478e;
+    }
+  }
 }
+
+.user-photo {
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 100%;
+  border: 3px solid $unnamed-color-349fa7;
+}
+

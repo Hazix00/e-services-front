@@ -1,0 +1,13 @@
+@import './variables';
+
+@mixin text-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+@mixin header-arrow-icon {
+  mat-icon {
+    font-size: 1rem;
+    color: $unnamed-color-656565;
+  }
+}

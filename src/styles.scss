@@ -4,7 +4,7 @@
 @import './scss/variables';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* { margin: 0; font-family: $primary-font; }
 
 
 .primary-color {
@@ -12,13 +12,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .accent-color {
   color: mat-color($my-accent) !important;
-}
-
-.navigation-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
 }
 
 .icon {

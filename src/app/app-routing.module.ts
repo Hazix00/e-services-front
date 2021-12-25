@@ -4,9 +4,9 @@ import { DemandesCategoriesComponent } from './pages/demandes-categories/demande
 import { DemandesComponent } from './pages/demandes/demandes.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'demandes-categorites', pathMatch: 'full'},
-  { path:'demandes-categorites', component: DemandesCategoriesComponent },
-  { path:'demandes', component: DemandesComponent }
+  { path:'demandes-categories', component: DemandesCategoriesComponent },
+  { path:'demandes', component: DemandesComponent },
+  { path: '**', redirectTo: 'demandes-categories', pathMatch: 'full'},
 
 ];
 

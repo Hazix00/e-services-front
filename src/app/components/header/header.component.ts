@@ -11,7 +11,8 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.router.url)
+
+    console.log(window.location.href);
   }
 
 }

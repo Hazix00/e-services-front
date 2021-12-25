@@ -1,4 +1,49 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+@import '../../../scss/icons';
+
+
 .main-menu {
-  background-color: #fff;
   height: 100%;
+  background-color: #fff;
+  overflow-y: hidden;
+
+  &__logo-container {
+    margin-top: 1.3125rem;
+  }
+  &__logo {
+    width: 10.25rem;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__nav {
+    margin: 1.875em auto 0 auto;
+  }
+
+  &__navigation-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    > li {
+      font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .625rem Montserrat;
+      color: $unnamed-color-888888;
+      text-align: left;
+      letter-spacing: 1.3px;
+      white-space: nowrap;
+      @include text-with-icon;
+      margin: 0 0 1.125rem 1.5rem;
+    }
+  }
+
+  &__active-link {
+    color: #fff !important;
+    background: transparent linear-gradient(180deg, $unnamed-color-1b478e 0%, #0E2447 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #1B478E 0%, #0E2447 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 25px;
+  }
 }

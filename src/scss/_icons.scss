@@ -1,0 +1,57 @@
+@import './variables';
+
+.icon-dashboard {
+  mask: url('../assets/img/dashboard.svg')
+}
+.icon-folders-1 {
+  mask: url('../assets/img/folders-1.svg')
+}
+.icon-buildings {
+  mask: url('../assets/img/buildings.svg')
+}
+.icon-workflow {
+  mask: url('../assets/img/workflow.svg')
+}
+.icon-form {
+  mask: url('../assets/img/form.svg')
+}
+.icon-users {
+  mask: url('../assets/img/users.svg')
+}
+.icon-Icon_feather-settings {
+  mask: url('../assets/img/Icon feather-settings.svg')
+}
+.icon-Icon_feather-lock {
+  mask: url('../assets/img/Icon feather-lock.svg')
+}
+
+.icon-container {
+  padding: .5rem;
+  background: #EBF8F8 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  margin-right: .625rem;
+}
+
+.icon {
+  background: $unnamed-color-1b478e;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  height: 1.0625rem;
+  width: 1.0625rem;
+  margin: 0;
+}
+
+.icon-active {
+
+  padding: 13px;
+  background: $unnamed-color-00a7a5 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  margin-right: .25rem;
+  margin-left: -0.3125rem;
+
+  span {
+    background: #fff;
+  }
+}
+
