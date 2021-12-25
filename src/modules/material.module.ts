@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatBadgeModule } from '@angular/material/badge'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
 
 const materialModules: any[] = [
   MatSidenavModule,
@@ -31,6 +32,7 @@ const materialModules: any[] = [
   MatDialogModule,
   MatAutocompleteModule,
   MatBadgeModule,
+  MatButtonToggleModule,
 ]
 
 @NgModule({
