@@ -1,16 +1,101 @@
 @import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+@import '../../../../scss/icons';
 
 .category {
-  &-container {
-    margin: 35px 0 0 0;
-    flex-wrap:wrap;
-    justify-content: space-between;
-  }
-
   margin-bottom:35px;
   height: 200px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid $unnamed-color-79d4dc;
   box-shadow: 0px 0px 11px #9E9E9E61;
   border-radius: 28px;
+
+  // div {
+  //   border: 1px solid black;
+  // }
+  h6 {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__dossier {
+    &__icon {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+    &__id {
+      font: $unnamed-font-style-normal normal 500 .625rem $unnamed-font-family-poppins;
+      color: $unnamed-color-1b478e;
+      text-align: center;
+      // letter-spacing: -0.07px;
+    }
+  }
+
+  &__top-row {
+    margin: 0 10px;
+    border-bottom: 1px solid $unnamed-color-cecece;
+  }
+
+  &__text {
+    padding-left: 10px;
+    border-left: 1px solid $unnamed-color-cecece;
+  }
+
+  &__title {
+    margin: 0;
+    font: $unnamed-font-style-normal normal medium .75rem Montserrat;
+    color: $unnamed-color-656565;
+    text-align: left;
+  }
+  &__description {
+    font: $unnamed-font-style-normal normal $unnamed-font-weight-normal .5rem Montserrat;
+    text-align: left;
+  }
+
+  &__user-date {
+    padding-left: .625rem;
+    border-right: 1px solid $unnamed-color-cecece;
+  }
+
+  &__user, &__demandes-in-progress {
+    @include small-text-icon($unnamed-color-656565);
+  }
+  &__date {
+    @include small-text-icon($unnamed-color-A4A4A4);
+  }
+
+  $font-size: .8rem;
+  &__demandes {
+    &-in-progress,&-ok,&-suspended,&-rejected {
+      span {
+        display: inline-block;
+        margin-right: 2px;
+      }
+    }
+    &-in-progress {
+      @include small-text-icon($unnamed-color-656565, $font-size);
+    }
+    &-ok {
+      @include small-text-icon($unnamed-color-15a10b, $font-size);
+    }
+    &-suspended {
+      @include small-text-icon($unnamed-color-ffbb00, $font-size);
+    }
+    &-rejected {
+      @include small-text-icon($unnamed-color-d51111, $font-size);
+    }
+  }
+  .icon-Icon_ionic-ios-folder-open {
+    @include svg-icon($unnamed-color-656565, $font-size);
+  }
+  .icon-ckeck {
+    @include svg-icon($unnamed-color-15a10b, $font-size);
+  }
+  .icon-pause {
+    @include svg-icon($unnamed-color-ffbb00, $font-size);
+  }
+  .icon-block {
+    @include svg-icon($unnamed-color-d51111, $font-size);
+  }
 }

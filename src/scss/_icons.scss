@@ -1,4 +1,5 @@
 @import './variables';
+@import './mixins';
 
 .icon-dashboard {
   mask: url('../assets/img/dashboard.svg')
@@ -24,6 +25,18 @@
 .icon-Icon_feather-lock {
   mask: url('../assets/img/Icon feather-lock.svg')
 }
+.icon-Icon_ionic-ios-folder-open {
+  mask: url('../assets/img/Icon\ ionic-ios-folder-open.svg')
+}
+.icon-ckeck {
+  mask: url('../assets/img/Icon\ material-check.svg')
+}
+.icon-block {
+  mask: url('../assets/img/Icon\ metro-blocked.svg')
+}
+.icon-pause {
+  mask: url('../assets/img/Icon\ material-pause-circle-outline.svg')
+}
 
 .icon-container {
   padding: .5rem;
@@ -33,13 +46,7 @@
 }
 
 .icon {
-  background: $unnamed-color-1b478e;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  height: 1.0625rem;
-  width: 1.0625rem;
-  margin: 0;
+  @include svg-icon
 }
 
 .icon-active {

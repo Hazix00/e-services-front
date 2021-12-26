@@ -1,5 +1,18 @@
 @import './variables';
 
+@mixin svg-icon(
+  $color: $unnamed-color-1b478e,
+  $size: 1.0625rem
+) {
+  background: $color;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  height: $size;
+  width: $size;
+  margin: 0;
+}
+
 @mixin text-with-icon {
   display: flex;
   align-items: center;
@@ -10,4 +23,16 @@
     font-size: 1rem;
     color: $unnamed-color-656565;
   }
+}
+
+@mixin small-text-icon($color, $font-size : .6rem){
+
+  margin: 0;
+  padding: 0;
+  font: $unnamed-font-style-normal normal $unnamed-font-weight-normal $font-size $unnamed-font-family-poppins;
+  color: $color;
+  mat-icon {
+    font-size: 1rem;
+  }
+  @include text-with-icon;
 }

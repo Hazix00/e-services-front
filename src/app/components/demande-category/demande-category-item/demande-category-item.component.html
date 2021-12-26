@@ -1,21 +1,57 @@
-<div class="category-container" fxLayout="row">
-  <div class="category" fxFlex="31">
 
+<div class="category" fxLayout="column">
+  <div class="category__top-row" fxFlex="70" fxLayout="row" fxLayoutAlign="center center">
+    <div class="category__dossier" fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
+      <img class="category__dossier__icon" src="../../../../assets/img/Icon ionic-ios-folder-open.svg" alt="">
+      <span class="category__dossier__id">D01</span>
+    </div>
+    <div class="category__text">
+      <h4 class="category__title">Titre du dossier</h4>
+      <small class="category__description">Lorem ipsum dolor sit amet consectetu adipisicing elit. Dolorem, veniam animi sapiente quasi incidunt quod sunt</small>
+    </div>
   </div>
-  <div class="category" fxFlex="31">
-
+  <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+    <div class="category__user-date" fxFlex="60">
+      <div class="category__user">
+        <mat-icon>person</mat-icon>
+        <span>Créer par : Achraf Mouadi</span>
+      </div>
+      <div class="category__date">
+        <mat-icon>date_range_outline</mat-icon>
+        <span>Créer le : 14/10/2021 - 19:00</span>
+      </div>
+    </div>
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+      <div class="category__demandes-in-progress">
+        <span>5</span>
+        <span class="icon-Icon_ionic-ios-folder-open"></span>
+      </div>
+      <div class="category__demandes-ok">
+        <span>4</span>
+        <span class="icon-ckeck"></span>
+      </div>
+      <div class="category__demandes-suspended">
+        <span>2</span>
+        <span class="icon-pause"></span>
+      </div>
+      <div class="category__demandes-rejected">
+        <span>1</span>
+        <span class="icon-block"></span>
+      </div>
+    </div>
   </div>
-  <div class="category" fxFlex="31">
-
-  </div>
-  <div class="category" fxFlex="31">
-
-  </div>
-  <div class="category" fxFlex="31">
-
-  </div>
-  <div class="category" fxFlex="31">
-
-  </div>
-
 </div>
+
+<!-- <div class="category" fxLayout="row wrap">
+  <div fxFlex="25%"></div>
+  <div fxFlex="75">
+    <h6>Le titre du dossier</h6>
+  </div>
+  <div fxFlex="25%" class="category__doss-id">icon</div>
+  <div fxFlex="75">
+    <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem,</small>
+  </div>
+  <div fxFlex="60">date</div>
+  <div fxFlex="40">icons</div>
+</div> -->
+
