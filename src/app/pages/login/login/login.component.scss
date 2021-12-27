@@ -1,0 +1,55 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+form {
+  input, select, button {
+    border: none;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    background: $unnamed-color-ffffff;
+    border: 1px solid $unnamed-color-2976a8;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 29px;
+  }
+  .control , hr {
+    margin-bottom: .9375rem;
+  }
+  hr {
+    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+    color: $unnamed-color-2976a8;
+  }
+  input {
+    border-color: $unnamed-color-349fa7;
+    background: $unnamed-color-E6F1FF;
+  }
+  .control {
+    > * {
+      width: 100%;
+      height: 2.25rem;
+    }
+    &-input {
+      @include text-with-icon
+    }
+  }
+}
+
+.title {
+  font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .8rem Montserrat;
+  color: $unnamed-color-1b478e;
+  text-align: center;
+  text-transform: uppercase;
+  // text-align: justify;
+  letter-spacing: 1px;
+}
+
+.register-forgotten-password {
+  margin-top: 7.5rem;
+  a {
+    display: block;
+  }
+}
