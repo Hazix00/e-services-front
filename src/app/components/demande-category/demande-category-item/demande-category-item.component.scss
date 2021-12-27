@@ -39,6 +39,7 @@
 
   &__text {
     padding-left: 10px;
+    height: 70%;
     border-left: 1px solid $unnamed-color-cecece;
   }
 
@@ -65,7 +66,7 @@
     @include small-text-icon($unnamed-color-A4A4A4);
   }
 
-  $font-size: .8rem;
+  $font-size: .65rem;
   &__demandes {
     &-in-progress,&-ok,&-suspended,&-rejected {
       span {

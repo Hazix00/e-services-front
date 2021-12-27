@@ -1,0 +1,23 @@
+.page-container {
+  height: 100%;
+
+  .main-container {
+    width: 14.75rem;
+  }
+  .logo-container {
+    margin-bottom: 3.5em;
+    .logo {
+      width: 10.125rem;
+      height: 5.625rem;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  aside {
+    background-color: aqua;
+  }
+}
+
+
+
+

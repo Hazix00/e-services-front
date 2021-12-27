@@ -12,11 +12,14 @@ import { DemandesItemComponent } from './components/demandes/demandes-item/deman
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DemandesCategoriesComponent } from './pages/demandes-categories/demandes-categories.component';
-import { LoginComponent } from './pages/login/login.component';
 import { DemandeCategoryListComponent } from './components/demande-category/demande-category-list/demande-category-list.component';
 import { DemandeCategoryItemComponent } from './components/demande-category/demande-category-item/demande-category-item.component';
 import { DemandeCategoryControlComponent } from './components/demande-category/demande-category-control/demande-category-control.component';
 import { DemandesControlComponent } from './components/demandes/demandes-control/demandes-control.component';
+import { LoginPageComponent } from './pages/login/login-page/login-page.component';
+import { LoginComponent } from './pages/login/login/login.component';
+import { RegisterComponent } from './pages/login/register/register.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,14 @@ import { DemandesControlComponent } from './components/demandes/demandes-control
     MainMenuComponent,
     HeaderComponent,
     DemandesCategoriesComponent,
-    LoginComponent,
     DemandeCategoryListComponent,
     DemandeCategoryItemComponent,
     DemandeCategoryControlComponent,
-    DemandesControlComponent
+    DemandesControlComponent,
+    LoginPageComponent,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
