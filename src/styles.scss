@@ -3,7 +3,7 @@
 @import './theme.scss';
 @import './scss/variables';
 
-html, body { height: 100%; }
+html, body { height: 100%; width: 100%; }
 * { margin: 0; font-family: $primary-font; }
 
 

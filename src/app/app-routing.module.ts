@@ -3,18 +3,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DemandesCategoriesComponent } from './pages/demandes-categories/demandes-categories.component';
 import { DemandesComponent } from './pages/demandes/demandes.component';
-import { LoginPageComponent } from './pages/login/login-page/login-page.component';
-import { LoginComponent } from './pages/login/login/login.component';
-import { RegisterComponent } from './pages/login/register/register.component';
+import { AccountComponent } from './pages/account/account.component';
+import { LoginComponent } from './pages/account/registration/login/login.component';
+import { RegisterInformationsComponent } from './pages/account/register-informations/register-informations.component';
+import { RegisterComponent } from './pages/account/registration/register/register.component';
+import { RegistrationComponent } from './pages/account/registration/registration.component';
 
 const routes: Routes = [
-  { path:'login', component: LoginPageComponent,
+  { path:'account', component: AccountComponent,
     children: [
-      { path:'', component: LoginComponent },
-      { path:'register', component: RegisterComponent },
+      { path: 'registration', component: RegistrationComponent,
+        children: [
+          { path:'login', component: LoginComponent },
+          { path:'register', component: RegisterComponent },
+        ]
+      },
+      { path:'register-informations', component: RegisterInformationsComponent,
+        children: [
+          { path:'generalities', component: RegisterComponent },
+          { path:'activities', component: RegisterComponent },
+          { path:'users', component: RegisterComponent },
+        ]
+      },
     ]
   },
-  { path:'register', component: LoginPageComponent },
   { path:'dashboard', component: DashboardComponent,
     children: [
       { path:'demandes-categories', component: DemandesCategoriesComponent },

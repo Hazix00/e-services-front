@@ -1,0 +1,39 @@
+<div class="register-container">
+  <h2 class="title">S'inscrire en tant que client</h2>
+
+  <div class="form-container">
+    <form>
+      <div class="control control-input">
+        <mat-icon></mat-icon>
+        <input type="file" placeholder="Sélectionner votre image">
+      </div>
+      <div class="control control-input">
+        <mat-icon>person</mat-icon>
+        <input type="text" placeholder="Nom">
+      </div>
+      <div class="control control-input">
+        <mat-icon>person</mat-icon>
+        <input type="text" placeholder="Prènom">
+      </div>
+      <div class="control control-input">
+        <mat-icon>email</mat-icon>
+        <input type="text" placeholder="Email">
+      </div>
+      <div class="control control-input">
+        <mat-icon>phone</mat-icon>
+        <input type="text" placeholder="Tél">
+      </div>
+      <div class="control control-input">
+        <mat-icon>key</mat-icon>
+        <input type="password" placeholder="Mot de passe">
+      </div>
+      <div class="control">
+        <button type="button">S'inscrire</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="cancel">
+    <a [routerLink]="['/login']">Annuler</a>
+  </div>
+</div>

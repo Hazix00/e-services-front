@@ -1,0 +1,18 @@
+@import '../login/login.component.scss';
+
+.register-container {
+  margin: 0 15%;
+  padding-bottom: 5rem;
+
+  .cancel {
+    margin-top: 5rem;
+    text-align: center;
+    a {
+      font: $unnamed-font-style-normal normal 500 .8rem Montserrat;
+      letter-spacing: 0px;
+      color: #9A9A9A;
+      text-decoration: none;
+    }
+}
+
+}

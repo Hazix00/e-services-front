@@ -16,10 +16,15 @@ import { DemandeCategoryListComponent } from './components/demande-category/dema
 import { DemandeCategoryItemComponent } from './components/demande-category/demande-category-item/demande-category-item.component';
 import { DemandeCategoryControlComponent } from './components/demande-category/demande-category-control/demande-category-control.component';
 import { DemandesControlComponent } from './components/demandes/demandes-control/demandes-control.component';
-import { LoginPageComponent } from './pages/login/login-page/login-page.component';
-import { LoginComponent } from './pages/login/login/login.component';
-import { RegisterComponent } from './pages/login/register/register.component';
+import { AccountComponent } from './pages/account/account.component';
+import { LoginComponent } from './pages/account/registration/login/login.component';
+import { RegisterComponent } from './pages/account/registration/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { RegisterInformationsComponent } from './pages/account/register-informations/register-informations.component';
+import { GeneralitiesComponent } from './pages/account/register-informations/generalities/generalities.component';
+import { ActivitiesComponent } from './pages/account/register-informations/activities/activities.component';
+import { UsersComponent } from './pages/account/register-informations/users/users.component';
+import { RegistrationComponent } from './pages/account/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +39,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     DemandeCategoryItemComponent,
     DemandeCategoryControlComponent,
     DemandesControlComponent,
-    LoginPageComponent,
+    AccountComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterInformationsComponent,
+    GeneralitiesComponent,
+    ActivitiesComponent,
+    UsersComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

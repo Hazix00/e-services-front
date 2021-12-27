@@ -1,0 +1,106 @@
+@import '../../../../../scss/variables';
+@import '../../../../../scss/mixins';
+
+.login-container {
+  width: 14.75rem;
+  margin: 0 auto;
+}
+form {
+
+  .control {
+    //border: none;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    background: $unnamed-color-ffffff;
+    border: 1px solid $unnamed-color-2976a8;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 29px;
+
+    > * {
+      width: 100%;
+      height: 2.25rem;
+    }
+    &-input {
+
+      @include text-with-icon;
+      border-color: $unnamed-color-349fa7;
+      background: $unnamed-color-E6F1FF;
+      mat-icon {
+        width: auto;
+        color: #02A7A7;
+        position: relative;
+        top: 5px;
+        margin-left: 12px;
+      }
+    }
+  }
+  .control, hr {
+    margin-bottom: .9375rem;
+  }
+  input, select, button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+  select {
+    text-align-last:center;
+    color: $unnamed-color-1b478e;
+  }
+  hr {
+    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+    color: $unnamed-color-349fa7;
+    size: .03rem;
+  }
+  input {
+    &::placeholder {
+      font: $unnamed-font-style-normal normal 500 .75rem Montserrat;
+      text-align: left;
+      letter-spacing: 1.26px;
+      color: #505050;
+    }
+  }
+  button {
+    border-radius: 29px;
+    background: transparent linear-gradient(269deg, $unnamed-color-1b478e 0%, #0E2447 100%) 0% 0% no-repeat padding-box;
+    color: white;
+    font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .625rem Montserrat;
+    text-align: center;
+    letter-spacing: 2.18px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
+}
+
+.title {
+  font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .8rem Montserrat;
+  color: $unnamed-color-1b478e;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.register-forgotten-password {
+  text-align: center;
+  margin-top: 7.5rem;
+  a {
+    display: block;
+    &:first-child {
+      font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .8rem Montserrat;
+      color: $unnamed-color-1b478e;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    &:nth-child(2) {
+      font: $unnamed-font-style-normal normal 500 .6rem Montserrat;
+      text-decoration: underline;
+      letter-spacing: 0px;
+      color: #9A9A9A;
+    }
+  }
+}

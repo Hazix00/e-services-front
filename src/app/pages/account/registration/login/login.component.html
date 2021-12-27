@@ -1,4 +1,4 @@
-<div>
+<div class="login-container">
   <h2 class="title">Se connecter en tant que</h2>
 
   <div class="form-container">
@@ -10,14 +10,14 @@
           <option value="Client">Client</option>
         </select>
       </div>
-      <hr>
+      <hr noshade>
       <div class="control control-input">
-
+        <mat-icon>person</mat-icon>
         <input type="text" placeholder="Login">
       </div>
       <div class="control control-input">
-
-        <input type="text" placeholder="Mot de passe">
+        <mat-icon>key</mat-icon>
+        <input type="password" placeholder="Mot de passe">
       </div>
       <div class="control">
         <button type="button">Se connecter</button>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="register-forgotten-password">
-    <a>S'inscrire</a>
+    <a [routerLink]="['/account', 'registration', 'register']">S'inscrire</a>
     <a>Mot de passe oublié</a>
   </div>
 </div>
