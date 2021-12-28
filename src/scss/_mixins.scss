@@ -36,3 +36,10 @@
   }
   @include text-with-icon;
 }
+
+@mixin rounded-border {
+  background: $unnamed-color-ffffff;
+  border: 1px solid $unnamed-color-2976a8;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 29px;
+}

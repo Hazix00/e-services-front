@@ -6,129 +6,138 @@
 <div class="register-container">
   <h2 class="title">RENSEIGNEMENTS SUR VOTRE ENTREPRISE</h2>
 
-  <div class="activities-container">
+  <div class="activities">
     <form>
-      <div>
-        <div class="activities-header activities-title-container">
+      <div class="activities__container">
+        <div class="activities__header activities__title-container">
           <span>Sélectionnez les activités de votre entreprise</span>
         </div>
-        <div>
-          <div class="activities-section">
-            <div class="activities-title-container">
-              <span>Médicaments à usage humain</span>
+        <div class="activities__body">
+          <div class="activities__section">
+            <div class="activities__title-container">
+              <input type="checkbox">
+              <label>Médicaments à usage humain</label>
             </div>
-            <div fxLayout="row" fxLayoutAlign="space-around center">
-              <div>
-                <input type="checkbox">
-                <label for="">Fabrication</label>
+            <div class="activities__section__body">
+              <div class="activities__service-types" fxLayout="row" fxLayoutAlign="space-between center">
+                <div>
+                  <input type="checkbox">
+                  <label for="">Fabrication</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Distribustion</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Importation</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Exportation</label>
+                </div>
+              </div>
+              <div class="activities__products">
+                <div>
+                  <input type="checkbox">
+                  <label for="">Médicaments radio-pharmaceutiques</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Médicaments biologiques.</label>
+                </div>
               </div>
               <div>
-                <input type="checkbox">
-                <label for="">Distribustion</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Importation</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Exportation</label>
-              </div>
-            </div>
-            <div>
-              <div>
-                <input type="checkbox">
-                <label for="">Médicaments radio-pharmaceutiques</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Médicaments biologiques.</label>
-              </div>
-            </div>
-            <div>
-              <div>
-                <mat-icon>info_outline</mat-icon>
-                <label for="">Exportation</label>
-                <select ></select>
-              </div>
-            </div>
-          </div>
-          <div class="activities-section">
-            <div class="activities-title-container">
-              <span>Médicaments à usage vétérinaire</span>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="space-around center">
-              <div>
-                <input type="checkbox">
-                <label for="">Fabrication</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Distribustion</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Importation</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Exportation</label>
+                <div>
+                  <mat-icon>info_outline</mat-icon>
+                  <label for="">Exportation</label>
+                  <select ></select>
+                </div>
               </div>
             </div>
           </div>
-          <div class="activities-section">
-            <div class="activities-title-container">
-              <span>Autres produits</span>
+          <div class="activities__section">
+            <div class="activities__title-container">
+              <input type="checkbox">
+              <label>Médicaments à usage vétérinaire</label>
             </div>
-            <div fxLayout="row" fxLayoutAlign="space-around center">
-              <div>
-                <input type="checkbox">
-                <label for="">Fabrication</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Distribustion</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Importation</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Exportation</label>
-              </div>
-            </div>
-            <div>
-              <div>
-                <input type="checkbox">
-                <label for="">Matières première à usage pharmaceutique</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Biomatériaux et des dispositifs médicaux</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Réactifs de diagnostic in vitro</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Réactifs destinés à la recherche scientifique</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Produits cosmétique</label>
-              </div>
-              <div>
-                <input type="checkbox">
-                <label for="">Compléments alimentaires</label>
+            <div class="activities__section__body">
+              <div class="activities__service-types" fxLayout="row" fxLayoutAlign="space-between center">
+                <div>
+                  <input type="checkbox">
+                  <label for="">Fabrication</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Distribustion</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Importation</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Exportation</label>
+                </div>
               </div>
             </div>
-            <div>
+          </div>
+          <div class="activities__section">
+            <div class="activities__title-container">
+              <input type="checkbox">
+              <label>Autres produits</label>
+            </div>
+            <div class="activities__section__body">
+              <div class="activities__service-types" fxLayout="row" fxLayoutAlign="space-between center">
+                <div>
+                  <input type="checkbox">
+                  <label for="">Fabrication</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Distribustion</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Importation</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Exportation</label>
+                </div>
+              </div>
+              <div class="activities__products">
+                <div>
+                  <input type="checkbox">
+                  <label for="">Matières première à usage pharmaceutique</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Biomatériaux et des dispositifs médicaux</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Réactifs de diagnostic in vitro</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Réactifs destinés à la recherche scientifique</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Produits cosmétique</label>
+                </div>
+                <div>
+                  <input type="checkbox">
+                  <label for="">Compléments alimentaires</label>
+                </div>
+              </div>
               <div>
-                <mat-icon>info_outline</mat-icon>
-                <label for="">Exportation</label>
-                <select ></select>
+                <div>
+                  <mat-icon>info_outline</mat-icon>
+                  <label for="">Exportation</label>
+                  <select ></select>
+                </div>
               </div>
             </div>
           </div>
@@ -136,10 +145,10 @@
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center" class="action-buttons">
         <div class="control">
-          <a [routerLink]="['/account', 'register-informations', 'generalities']">Retour</a>
+          <button class="btn btn-invert" [routerLink]="['/account', 'register-informations', 'generalities']">Retour</button>
         </div>
         <div class="control">
-          <button type="button">Terminer</button>
+          <button class="btn" type="button">Terminer</button>
         </div>
       </div>
     </form>

@@ -5,6 +5,7 @@
   width: 14.75rem;
   margin: 0 auto;
 }
+
 form {
 
   .control {
@@ -14,10 +15,7 @@ form {
     margin: 0;
     outline: none;
     box-sizing: border-box;
-    background: $unnamed-color-ffffff;
-    border: 1px solid $unnamed-color-2976a8;
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 29px;
+    @include rounded-border;
 
     > * {
       width: 100%;
@@ -64,8 +62,10 @@ form {
       color: #505050;
     }
   }
-  button {
+  .btn {
     border-radius: 29px;
+    padding: 0 18px;
+    cursor: pointer;
     background: transparent linear-gradient(269deg, $unnamed-color-1b478e 0%, #0E2447 100%) 0% 0% no-repeat padding-box;
     color: white;
     font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .625rem Montserrat;
@@ -89,6 +89,7 @@ form {
   margin-top: 5rem;
   a {
     display: block;
+    height: 100%;
     &:first-child {
       font: $unnamed-font-style-normal normal $unnamed-font-weight-600 .8rem Montserrat;
       color: $unnamed-color-1b478e;

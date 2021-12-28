@@ -9,7 +9,12 @@
   <div class="form-container">
     <form>
       <div class="control control-input">
-        <input type="file" placeholder="Sélectionner votre logo">
+        <div>
+          <img src="" alt="logo">
+        </div>
+        <div>
+          <input type="file" placeholder="Sélectionner votre logo">
+        </div>
       </div>
       <div class="control control-input">
         <input type="text" placeholder="Raison sociale">
@@ -23,11 +28,13 @@
       <div class="control control-input">
         <input type="text" placeholder="Adresse postale">
       </div>
-      <div class="control control-input">
-        <input type="text" placeholder="N° de Téléphone">
-      </div>
-      <div class="control control-input">
-        <input type="text" placeholder="Fax du siège social">
+      <div class="inner-control" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="control control-input">
+          <input type="text" placeholder="N° de Téléphone">
+        </div>
+        <div class="control control-input">
+          <input type="text" placeholder="Fax du siège social">
+        </div>
       </div>
       <div class="control control-input">
         <input type="text" placeholder="Adresse électronique de responsable 1">
@@ -41,11 +48,13 @@
       <div class="control control-input">
         <input type="text" placeholder="Numéro de téléphone en cas d’urgence 2">
       </div>
-      <div class="control">
-        <button type="button" [routerLink]="['/account', 'register-informations', 'activities']">Suivant</button>
-      </div>
-      <div class="cancel">
-        <a [routerLink]="['/account', 'registration', 'register']">Retour</a>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="action-buttons">
+        <div class="control">
+          <button class="btn btn-invert" [routerLink]="['/account', 'registration', 'register']">Retour</button>
+        </div>
+        <div class="control">
+          <button class="btn" type="button" [routerLink]="['/account', 'register-informations', 'activities']">Suivant</button>
+        </div>
       </div>
     </form>
   </div>

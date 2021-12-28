@@ -1,15 +1,85 @@
-form div {
-  border: 1px solid #000;
-}
+@import '../../../../../scss/mixins';
+@import '../../../../../scss/variables';
+@import '../../registration/register/register.component.scss';
 
+
+.register-container {
+  margin: auto 10%;
+}
 .activities {
 
-  &-title-container {
-    background-color: #79D4DC;
+  $spacing: 1.6875rem;
+
+  &__container, &__section {
+    @include rounded-border;
+    border-radius: 20px;
+    border-color: $unnamed-color-79d4dc;
+    overflow: hidden;
   }
 
-  &-header, &-section {
-    margin-bottom: 27px;
+  &__title-container {
+    background-color: #D4E3F9;
+    height: 1.8125rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1.25rem;
+    border-bottom: 1px solid $unnamed-color-79d4dc;
+    font: $unnamed-font-style-normal normal 500 12px Montserrat;
+    color: $unnamed-color-656565;
+  }
+
+  &__header, &__section {
+    margin-bottom: $spacing;
+  }
+
+  &__header {
+    background-color: #E5FDFF;
+    height: 2.9375rem;
+    font: $unnamed-font-style-normal normal 500 .84375rem Montserrat;
+    color: $unnamed-color-1b478e;
+  }
+
+  &__body {
+    padding: 0 $spacing;
+  }
+
+  &__section {
+    &__body {
+      padding: 0 .9375rem;
+      label {
+        font: $unnamed-font-style-normal normal 500 .5rem Montserrat;
+        color: $unnamed-color-656565;
+      }
+    }
+  }
+
+  &__service-types, &__products {
+    padding: 10px 0;
+    border-bottom: 1px solid $unnamed-color-b9b9b9;
+  }
+
+  &__service-types {
+    > div {
+      background: #E8E8E8 0% 0% no-repeat padding-box;
+      border-radius: 8px;
+      padding: 2px 7px 4px 7px;
+      > input {
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+
+  label {
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  mat-icon {
+    color: $unnamed-color-79d4dc;
+    font-size: 14px;
+    position: relative;
+    top: 3px;
   }
 
 }

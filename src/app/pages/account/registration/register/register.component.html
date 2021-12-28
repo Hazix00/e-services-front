@@ -31,11 +31,13 @@
         <mat-icon>key</mat-icon>
         <input type="password" placeholder="confivrmer le mot de passe">
       </div>
-      <div class="control">
-        <button [routerLink]="['/account', 'register-informations', 'generalities']" type="button">Suivant</button>
-      </div>
-      <div class="cancel">
-        <a [routerLink]="['/account', 'registration', 'login']">Annuler</a>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="action-buttons">
+        <div class="control">
+          <button class="btn btn-invert" [routerLink]="['/account', 'registration', 'login']">Annuler</button>
+        </div>
+        <div class="control">
+          <button class="btn" [routerLink]="['/account', 'register-informations', 'generalities']" type="button">Suivant</button>
+        </div>
       </div>
     </form>
   </div>
