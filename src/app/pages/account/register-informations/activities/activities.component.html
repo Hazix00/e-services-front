@@ -1,1 +1,148 @@
-<p>activities works!</p>
+<div class="registration-progress">
+  <div class="active-step">Generalités</div>
+  <div class="active-step">Activités</div>
+</div>
+
+<div class="register-container">
+  <h2 class="title">RENSEIGNEMENTS SUR VOTRE ENTREPRISE</h2>
+
+  <div class="activities-container">
+    <form>
+      <div>
+        <div class="activities-header activities-title-container">
+          <span>Sélectionnez les activités de votre entreprise</span>
+        </div>
+        <div>
+          <div class="activities-section">
+            <div class="activities-title-container">
+              <span>Médicaments à usage humain</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <div>
+                <label for="">Fabrication</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Distribustion</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Importation</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Exportation</label>
+                <input type="checkbox">
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="">Médicaments radio-pharmaceutiques</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Médicaments biologiques.</label>
+                <input type="checkbox">
+              </div>
+            </div>
+            <div>
+              <div>
+                <mat-icon>info_outline</mat-icon>
+                <label for="">Exportation</label>
+                <select ></select>
+              </div>
+            </div>
+          </div>
+          <div class="activities-section">
+            <div class="activities-title-container">
+              <span>Médicaments à usage vétérinaire</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <div>
+                <label for="">Fabrication</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Distribustion</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Importation</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Exportation</label>
+                <input type="checkbox">
+              </div>
+            </div>
+          </div>
+          <div class="activities-section">
+            <div class="activities-title-container">
+              <span>Autres produits</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <div>
+                <label for="">Fabrication</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Distribustion</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Importation</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Exportation</label>
+                <input type="checkbox">
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="">Matières première à usage pharmaceutique</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Biomatériaux et des dispositifs médicaux</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Réactifs de diagnostic in vitro</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Réactifs destinés à la recherche scientifique</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Produits cosmétique</label>
+                <input type="checkbox">
+              </div>
+              <div>
+                <label for="">Compléments alimentaires</label>
+                <input type="checkbox">
+              </div>
+            </div>
+            <div>
+              <div>
+                <mat-icon>info_outline</mat-icon>
+                <label for="">Exportation</label>
+                <select ></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="action-buttons">
+        <div class="control">
+          <a [routerLink]="['/account', 'register-informations', 'generalities']">Retour</a>
+        </div>
+        <div class="control">
+          <button type="button">Terminer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

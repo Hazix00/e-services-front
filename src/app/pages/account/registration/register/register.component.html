@@ -27,13 +27,16 @@
         <mat-icon>key</mat-icon>
         <input type="password" placeholder="Mot de passe">
       </div>
+      <div class="control control-input">
+        <mat-icon>key</mat-icon>
+        <input type="password" placeholder="confivrmer le mot de passe">
+      </div>
       <div class="control">
-        <button type="button">S'inscrire</button>
+        <button [routerLink]="['/account', 'register-informations', 'generalities']" type="button">Suivant</button>
+      </div>
+      <div class="cancel">
+        <a [routerLink]="['/account', 'registration', 'login']">Annuler</a>
       </div>
     </form>
-  </div>
-
-  <div class="cancel">
-    <a [routerLink]="['/login']">Annuler</a>
   </div>
 </div>

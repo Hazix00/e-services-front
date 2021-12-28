@@ -8,21 +8,24 @@ import { LoginComponent } from './pages/account/registration/login/login.compone
 import { RegisterInformationsComponent } from './pages/account/register-informations/register-informations.component';
 import { RegisterComponent } from './pages/account/registration/register/register.component';
 import { RegistrationComponent } from './pages/account/registration/registration.component';
+import { GeneralitiesComponent } from './pages/account/register-informations/generalities/generalities.component';
+import { ActivitiesComponent } from './pages/account/register-informations/activities/activities.component';
 
 const routes: Routes = [
   { path:'account', component: AccountComponent,
     children: [
       { path: 'registration', component: RegistrationComponent,
         children: [
+          { path:'', component: LoginComponent },
           { path:'login', component: LoginComponent },
           { path:'register', component: RegisterComponent },
         ]
       },
       { path:'register-informations', component: RegisterInformationsComponent,
         children: [
-          { path:'generalities', component: RegisterComponent },
-          { path:'activities', component: RegisterComponent },
-          { path:'users', component: RegisterComponent },
+          { path:'', component: GeneralitiesComponent },
+          { path:'generalities', component: GeneralitiesComponent },
+          { path:'activities', component: ActivitiesComponent }
         ]
       },
     ]

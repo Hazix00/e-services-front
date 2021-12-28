@@ -1,1 +1,52 @@
-<p>generalities works!</p>
+<div class="registration-progress">
+  <div class="active-step">Generalités</div>
+  <div class="active-step">Activités</div>
+</div>
+
+<div class="register-container">
+  <h2 class="title">RENSEIGNEMENTS SUR VOTRE ENTREPRISE</h2>
+
+  <div class="form-container">
+    <form>
+      <div class="control control-input">
+        <input type="file" placeholder="Sélectionner votre logo">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Raison sociale">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Forme juridique">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Adresse géographique">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Adresse postale">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="N° de Téléphone">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Fax du siège social">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Adresse électronique de responsable 1">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Adresse électronique de responsable 2">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Numéro de téléphone en cas d’urgence 1">
+      </div>
+      <div class="control control-input">
+        <input type="text" placeholder="Numéro de téléphone en cas d’urgence 2">
+      </div>
+      <div class="control">
+        <button type="button" [routerLink]="['/account', 'register-informations', 'activities']">Suivant</button>
+      </div>
+      <div class="cancel">
+        <a [routerLink]="['/account', 'registration', 'register']">Retour</a>
+      </div>
+    </form>
+  </div>
+</div>
