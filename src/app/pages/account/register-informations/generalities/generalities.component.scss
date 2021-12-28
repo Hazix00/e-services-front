@@ -1,6 +1,29 @@
+@import '/src/scss/variables';
 @import '../../registration/login/login.component.scss';
-@import '../../registration/register/register.component.scss'
+@import '../../registration/register/register.component.scss';
 
-// .form-container {
-//   width: 70%;
-// }
+
+.registration-progress {
+  margin-bottom: 25px;
+  padding: 14px 27px 9px 27px;
+  color: #fff;
+  background: transparent linear-gradient(270deg, $unnamed-color-00c2d1 0%, $unnamed-color-349fa7 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 11px #9E9E9E61;
+
+  .bar {
+    padding: 0 24px 0 30px;
+  }
+  .circle {
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50px;
+  }
+  .rectangle {
+    height: 4px;
+    background-color: #fff;
+  }
+  .inactive {
+    background-color: #73D9E1;
+  }
+}

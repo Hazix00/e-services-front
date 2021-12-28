@@ -1,6 +1,14 @@
 <div class="registration-progress">
-  <div class="active-step">Generalités</div>
-  <div class="active-step">Activités</div>
+  <div fxLayout="row" fxLayoutAlign="space-between none">
+    <div class="active-step">Generalités</div>
+    <div class="active-step">Activités</div>
+  </div>
+  <div class="bar" fxLayout="row" fxLayoutAlign="center center">
+    <div class="circle"></div>
+    <div fxFlex="47" class="rectangle"></div>
+    <div fxFlex="47" class="rectangle"></div>
+    <div class="circle"></div>
+  </div>
 </div>
 
 <div class="register-container">
@@ -136,7 +144,9 @@
                 <div>
                   <mat-icon>info_outline</mat-icon>
                   <label for="">Exportation</label>
-                  <select ></select>
+                  <select>
+                    <option value="gr"><span class="fi fi-gr fis"></span></option>
+                  </select>
                 </div>
               </div>
             </div>

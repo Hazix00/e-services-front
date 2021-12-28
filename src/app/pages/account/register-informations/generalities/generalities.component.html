@@ -1,6 +1,14 @@
 <div class="registration-progress">
-  <div class="active-step">Generalités</div>
-  <div class="active-step">Activités</div>
+  <div fxLayout="row" fxLayoutAlign="space-between none">
+    <div class="active-step">Generalités</div>
+    <div class="active-step">Activités</div>
+  </div>
+  <div class="bar" fxLayout="row" fxLayoutAlign="center center">
+    <div class="circle"></div>
+    <div fxFlex="47" class="rectangle"></div>
+    <div fxFlex="47" class="rectangle inactive"></div>
+    <div class="circle inactive"></div>
+  </div>
 </div>
 
 <div class="register-container">
