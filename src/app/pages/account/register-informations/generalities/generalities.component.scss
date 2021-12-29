@@ -27,3 +27,19 @@
     background-color: #73D9E1;
   }
 }
+
+input::placeholder {
+  font: $unnamed-font-style-normal normal 500 10px Montserrat !important;
+  color: #6f6d6d !important;
+}
+.control {
+  background: $unnamed-color-ffffff 0% 0% no-repeat padding-box !important;
+  border: 1px solid $unnamed-color-79d4dc !important;
+  box-shadow: 0px 0px 11px #9E9E9E61 !important;
+  border-radius: 20px !important;
+}
+
+.control-border-grey {
+  border-color: #6f6d6d !important;
+  box-shadow: 0px 0px 11px #9E9E9E61 !important;
+}

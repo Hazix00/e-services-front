@@ -3,9 +3,18 @@
 
   <div class="form-container">
     <form>
-      <div class="control control-input">
-        <mat-icon></mat-icon>
-        <input type="file" placeholder="Sélectionner votre image">
+      <div class="user-photo control control-file">
+
+        <input id="image" type="file" class="file">
+        <label for="image">
+          <mat-icon>camera_alt</mat-icon>
+        </label>
+        <div class="user-photo__message" fxLayout="row" fxLayoutAlign="center center">
+          <span>Sélectionner votre image</span>
+        </div>
+
+
+
       </div>
       <div class="control control-input">
         <mat-icon>person</mat-icon>
