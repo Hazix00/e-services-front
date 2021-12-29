@@ -16,12 +16,14 @@
 
   <div class="form-container">
     <form>
-      <div class="control control-input">
-        <div>
-          <img src="" alt="logo">
-        </div>
-        <div>
-          <input type="file" placeholder="Sélectionner votre logo">
+      <div class="user-photo control control-file">
+        <input id="image" type="file" class="file">
+        <label for="image">
+          <!-- <mat-icon>camera_alt</mat-icon> -->
+          <img src="../../../../../assets/img/img-200x200.png" alt="">
+        </label>
+        <div class="user-photo__message" fxLayout="row" fxLayoutAlign="center center">
+          <span>Sélectionner votre logo</span>
         </div>
       </div>
       <div class="control control-input">
