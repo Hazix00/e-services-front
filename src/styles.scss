@@ -2,6 +2,7 @@
 @import '~@angular/material/theming';
 @import './theme.scss';
 @import './scss/variables';
+@import './scss/globals';
 
 html, body { height: 100%; width: 100%; }
 * { margin: 0; font-family: $primary-font; }
