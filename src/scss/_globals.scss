@@ -1,3 +1,7 @@
+@import './variables';
+@import './buttons';
+@import './mixins';
+
 .separator {
   border-right: 1px solid $unnamed-color-A4A4A4;
   height: 24px;
@@ -5,4 +9,108 @@
 
 .dashboard-items-container {
   margin: 2.2rem 2.2rem 0 2.2rem;
+}
+
+.list-container {
+  margin: 35px 0 0 0;
+}
+
+.search-controller {
+  padding: 8px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 10px #00000021;
+  border-radius: 25px;
+
+  &__input {
+    border-radius: 25px;
+    padding: 10px;
+    width: 85%;
+    height: 15px;
+    background: $unnamed-color-ffffff 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #E2F1F2;
+
+    &::placeholder {
+      color: $unnamed-color-888888;
+      font-size: .8em;
+    }
+    &:focus {
+      outline: none;
+      border-color: $unnamed-color-00a7a5;
+    }
+
+  }
+  &__layout-view-toggle {
+
+    mat-button-toggle-group, mat-button-toggle {
+      font-size: .7rem;
+      font: $unnamed-font-style-normal normal medium .6rem Montserrat;
+      text-align: left;
+      letter-spacing: -0.09px;
+      border: none;
+      padding: 0;
+      color: $unnamed-color-1b478e;
+      button[aria-pressed="true"] {
+        background-color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.control {
+  //border: none;
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  @include rounded-border;
+
+  > * {
+    width: 100%;
+    height: 2.25rem;
+  }
+  &-input {
+
+    @include text-with-icon;
+    border-color: $unnamed-color-349fa7;
+    background: $unnamed-color-E6F1FF;
+    mat-icon {
+      width: auto;
+      color: #02A7A7;
+      position: relative;
+      top: 5px;
+      margin-left: 12px;
+    }
+  }
+
+
+}
+.control, hr {
+  margin-bottom: .9375rem;
+}
+input, select, button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+select {
+  text-align-last:center;
+  color: $unnamed-color-1b478e;
+}
+hr {
+  width: 45%;
+  margin-right: auto;
+  margin-left: auto;
+  color: $unnamed-color-349fa7;
+  size: .03rem;
+}
+input {
+  padding-left: 20px;
+  &::placeholder {
+    font: $unnamed-font-style-normal normal 500 .75rem Montserrat;
+    text-align: left;
+    letter-spacing: 1.26px;
+    color: #505050;
+  }
 }
