@@ -129,3 +129,13 @@
     top: 3px;
   }
 }
+
+.admin-progress-bar {
+  margin-top: 5px;
+  padding: 0 20px;
+  > div {
+    height: 5px;
+    background-color: #BCE1A0;
+    border-radius: 5px;
+  }
+}

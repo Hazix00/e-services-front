@@ -26,9 +26,10 @@ import { ActivitiesComponent } from './pages/account/register-informations/activ
 import { UsersComponent } from './pages/account/register-informations/users/users.component';
 import { RegistrationComponent } from './pages/account/registration/registration.component';
 import { UsersManagementComponent } from './pages/dashboard/users-management/users-management.component';
-import { UsersListComponent } from './components/userss/users-list/users-list.component';
-import { UserItemComponent } from './components/userss/user-item/user-item.component';
-import { UsersControlComponent } from './components/userss/users-control/users-control.component';
+import { UsersListComponent } from './components/users/users-list/users-list.component';
+import { UserItemComponent } from './components/users/user-item/user-item.component';
+import { UsersControlComponent } from './components/users/users-control/users-control.component';
+import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { UsersControlComponent } from './components/userss/users-control/users-c
     UsersListComponent,
     UserItemComponent,
     UsersControlComponent,
+    DemandeDetailsComponent,
   ],
   imports: [
     BrowserModule,
