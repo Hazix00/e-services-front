@@ -1,2 +1,3 @@
-<p>demandes-list works!</p>
-<app-demandes-item></app-demandes-item>
+<div class="list-container" fxLayout="column" fxLayoutGap="18px">
+  <app-demandes-item *ngFor="let item of dummy_list" [status]="item"></app-demandes-item>
+</div>

@@ -1,1 +1,26 @@
-<p>demandes-control works!</p>
+<div class="control" fxLayout="row" fxLayoutAlign="none center">
+  <div fxFlex="8">
+    <input class="control__input" fxFlexOffset="5" placeholder="ID">
+  </div>
+  <div fxFlex="16">
+    <input class="control__input" fxFlexOffset="5" placeholder="Catégorie">
+  </div>
+  <div fxFlex="16">
+    <input class="control__input" fxFlexOffset="5" placeholder="Famille">
+  </div>
+  <div fxFlex="18">
+    <input class="control__input" fxFlexOffset="5" placeholder="Nbr de dossier">
+  </div>
+  <div fxFlex="14">
+    <input class="control__input" fxFlexOffset="5" placeholder="Créateur">
+  </div>
+  <div fxFlex="14">
+    <input class="control__input" fxFlexOffset="5" placeholder="Date création">
+  </div>
+  <div class="control__layout-view-toggle">
+    <mat-button-toggle-group name="" aria-label="">
+      <mat-button-toggle value="list"><mat-icon>list</mat-icon>Liste</mat-button-toggle>
+      <mat-button-toggle checked="true" value="grid"><mat-icon>view_comfy_sharp</mat-icon>Grille</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>

@@ -1,1 +1,52 @@
-<p>demandes-item works!</p>
+<div class="demande" fxLayout="row">
+  <div class="demande__infos" fxFlex="100" fxLayout="row" fxLayoutAlign="none center">
+    <div class="id" fxFlex="9.1796875">
+      <img class="icon-Icon_ionic-ios-folder-open icon {{statusClass}}" alt="">
+      <span class="loop" >BC456</span>
+    </div>
+    <span class="border"></span>
+    <div class="status" fxFlex="11.71875">
+      <mat-icon [class]="statusClass">{{statusClass}}</mat-icon>
+      <span [class]="statusClass" >{{status}}</span>
+    </div>
+    <span class="border"></span>
+    <div class="client" fxFlex="20.01953125">
+      <img src="../../../../assets/img/img-200x200.png" alt="">
+      <span>Client</span>
+    </div>
+    <span class="border"></span>
+    <div class="name" fxFlex="20.01953125">Nom de demande ou médicament</div>
+    <span class="border"></span>
+    <div class="user-infos" fxFlex="18.06640625">
+      <mat-icon>person_outline</mat-icon>
+      <div>
+        <div>Crée par: User Name</div>
+        <div>Crée le: 14/10/2021</div>
+      </div>
+    </div>
+    <span class="border"></span>
+    <div class="time-progress" fxFlex="20.99609375">
+      <mat-icon>av_timer</mat-icon>
+      <div fxLayout="column">
+        <div>Temps écoulé</div>
+        <div class="days" fxFlexAlign="end">15j/15j</div>
+      </div>
+      <div class="time-progress-spinner">
+        <mat-progress-spinner
+          [mode]="'determinate'"
+          [value]="67"
+          [diameter]="33">
+        </mat-progress-spinner>
+        <div style="position: relative; top: -22px; left: 28px; height: 0;">67%</div>
+      </div>
+    </div>
+    <button class="details-icon-btn" mat-icon-button>
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+
+  <button class="" fxFlex=".1" type="menu" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+</div>

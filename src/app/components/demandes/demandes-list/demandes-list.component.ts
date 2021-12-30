@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemandesListComponent implements OnInit {
 
+  dummy_list = [
+    'En progression',
+    'Terminé',
+    'Terminé',
+    'En progression',
+    'Rejeté',
+    'En progression'
+  ]
   constructor() { }
 
   ngOnInit(): void {

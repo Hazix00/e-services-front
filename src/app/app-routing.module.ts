@@ -32,6 +32,7 @@ const routes: Routes = [
   },
   { path:'dashboard', component: DashboardComponent,
     children: [
+      { path:'', component: DemandesCategoriesComponent },
       { path:'demandes-categories', component: DemandesCategoriesComponent },
       { path:'demandes', component: DemandesComponent },
     ]
