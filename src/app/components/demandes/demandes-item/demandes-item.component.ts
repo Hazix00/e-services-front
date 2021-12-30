@@ -10,6 +10,7 @@ export class DemandesItemComponent implements OnInit {
   @Input() status!: string
   statusClasses = new Map()
   statusClass!: string
+  clientDetailsOpen = false
 
   constructor() { }
 
@@ -18,6 +19,7 @@ export class DemandesItemComponent implements OnInit {
     this.statusClasses.set('En progression', 'loop',)
     this.statusClasses.set('Terminé', 'done',)
     this.statusClasses.set('Rejeté', 'do_disturb',)
+    this.statusClasses.set('En pause', 'pause_circle_outline',)
     this.statusClass = this.statusClasses.get(this.status)
   }
 

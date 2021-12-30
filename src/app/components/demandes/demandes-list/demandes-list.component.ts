@@ -11,7 +11,7 @@ export class DemandesListComponent implements OnInit {
     'En progression',
     'Terminé',
     'Terminé',
-    'En progression',
+    'En pause',
     'Rejeté',
     'En progression'
   ]

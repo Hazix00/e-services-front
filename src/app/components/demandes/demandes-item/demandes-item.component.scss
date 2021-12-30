@@ -1,5 +1,5 @@
 @import '~/src/scss/variables';
-@import '~/src/scss/icons';
+@import '~/src/scss/mixins';
 
 .demande {
   font: $unnamed-font-style-normal normal 500 .5625rem $unnamed-font-family-poppins;
@@ -10,9 +10,15 @@
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 11px #9E9E9E61;
   border-radius: 28px;
+  z-index: 1;
 
   &__infos {
-
+    .id {
+      span {
+        display: inline-block;
+        margin-right: 7px;
+      }
+    }
     img {
       width: 23px;
       height: 20px;
@@ -75,10 +81,51 @@
 
 .loop {
   color: #1B478E !important;
+  .icon {
+    background: #1B478E !important;
+  }
 }
 .done {
   color: #15A10B !important;
+  .icon {
+    background: #15A10B !important;
+  }
 }
 .do_disturb {
   color: #D51111 !important;
+  .icon {
+    background: #D51111 !important;
+  }
+}
+.pause_circle_outline {
+  color: #FFBB00 !important;
+  .icon {
+    background: #FFBB00 !important;
+  }
+}
+
+.client-details {
+  font: $unnamed-font-style-normal normal 500 .5625rem $unnamed-font-family-poppins;
+  background: transparent linear-gradient(180deg, $unnamed-color-ffffff) 0%, #FEEE8C 100% 0% 0% no-repeat padding-box;
+  border: 1px solid $unnamed-color-9e8f2e;
+  border-top: none;
+  box-shadow: 0px 0px 11px #9E9E9E61;
+  border-radius: 0px 0px 28px 28px;
+  z-index: 0;
+  padding: 5px 10px;
+  > div > span {
+    margin-right: .3125rem;
+  }
+}
+.details-open {
+  border-radius: 28px 28px 0 0 !important;
+}
+
+.btn {
+  font-size: 6px;
+  .mat-icon {
+    font-size: 15px;
+    position: relative;
+    top: 3px;
+  }
 }
