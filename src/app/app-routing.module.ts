@@ -13,39 +13,49 @@ import { ActivitiesComponent } from './pages/account/register-informations/activ
 import { UsersManagementComponent } from './pages/dashboard/users-management/users-management.component';
 
 const routes: Routes = [
-
-  { path:'account', component: AccountComponent,
+  {
+    path: 'account',
+    component: AccountComponent,
     children: [
-      { path: 'registration', component: RegistrationComponent,
+      {
+        path: 'registration',
+        component: RegistrationComponent,
         children: [
-          { path:'', component: LoginComponent },
-          { path:'login', component: LoginComponent },
-          { path:'register', component: RegisterComponent },
-        ]
+          { path: '', component: LoginComponent },
+          { path: 'login', component: LoginComponent },
+          { path: 'register', component: RegisterComponent },
+        ],
       },
-      { path:'register-informations', component: RegisterInformationsComponent,
+      {
+        path: 'register-informations',
+        component: RegisterInformationsComponent,
         children: [
-          { path:'', component: GeneralitiesComponent },
-          { path:'generalities', component: GeneralitiesComponent },
-          { path:'activities', component: ActivitiesComponent }
-        ]
+          { path: '', component: GeneralitiesComponent },
+          { path: 'generalities', component: GeneralitiesComponent },
+          { path: 'activities', component: ActivitiesComponent },
+        ],
       },
-    ]
+    ],
   },
-  { path:'dashboard', component: DashboardComponent,
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
     children: [
-      { path:'', component: DemandesCategoriesComponent },
-      { path:'demandes-categories', component: DemandesCategoriesComponent },
-      { path:'demandes', component: DemandesComponent },
-      { path:'users-management', component: UsersManagementComponent },
-    ]
+      { path: '', component: DemandesCategoriesComponent },
+      { path: 'demandes-categories', component: DemandesCategoriesComponent },
+      { path: 'demandes', component: DemandesComponent },
+      { path: 'users-management', component: UsersManagementComponent },
+    ],
   },
-  { path: '**', redirectTo: 'dashboard/demandes-categories', pathMatch: 'full'},
-
+  {
+    path: '**',
+    redirectTo: 'account/registration/register',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

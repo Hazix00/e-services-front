@@ -1,49 +1,10 @@
-<div class="register-container">
-  <h2 class="title">S'inscrire en tant que client</h2>
-
-  <div class="form-container">
-    <form>
-      <div class="user-photo control control-file">
-        <input id="image" type="file" class="file">
-        <label for="image">
-          <mat-icon>camera_alt</mat-icon>
-        </label>
-        <div class="user-photo__message" fxLayout="row" fxLayoutAlign="center center">
-          <span>Sélectionner votre image</span>
-        </div>
-      </div>
-      <div class="control control-input">
-        <mat-icon>person</mat-icon>
-        <input type="text" placeholder="Nom">
-      </div>
-      <div class="control control-input">
-        <mat-icon>person</mat-icon>
-        <input type="text" placeholder="Prènom">
-      </div>
-      <div class="control control-input">
-        <mat-icon>email</mat-icon>
-        <input type="text" placeholder="Email">
-      </div>
-      <div class="control control-input">
-        <mat-icon>phone</mat-icon>
-        <input type="text" placeholder="Tél">
-      </div>
-      <div class="control control-input">
-        <mat-icon>key</mat-icon>
-        <input type="password" placeholder="Mot de passe">
-      </div>
-      <div class="control control-input">
-        <mat-icon>key</mat-icon>
-        <input type="password" placeholder="Confirmer le mot de passe">
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between center" class="action-buttons">
-        <div class="control">
-          <button class="btn btn-invert" [routerLink]="['/account', 'registration', 'login']">Annuler</button>
-        </div>
-        <div class="control">
-          <button class="btn" [routerLink]="['/account', 'register-informations', 'generalities']" type="button">Suivant</button>
-        </div>
-      </div>
-    </form>
-  </div>
+<div>
+  <app-json-form
+    *ngIf="!!form"
+    (onSubmit)="onSubmit($event)"
+    [inputs]="inputs"
+    [form]="form"
+    [defaultValues]="defaultValues"
+    (onPrevious)="getPreviousForm()"
+  ></app-json-form>
 </div>

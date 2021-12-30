@@ -1,0 +1,71 @@
+@import '../../pages/account/registration/login/login.component.scss';
+
+.register-container {
+    margin: 0 15%;
+    padding-bottom: 5rem;
+
+    .action-buttons {
+        margin-top: 44px;
+
+        .btn-invert {
+            background: #fff;
+            color: #0E2447;
+        }
+    }
+
+    .control {
+        box-shadow: none;
+
+        &-file {
+            border-radius: 50px;
+            border-color: transparent;
+            background: #E6F1FF 0% 0% no-repeat padding-box;
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+
+            label {
+                display: inline-block;
+                width: 55px;
+                height: 55px;
+                border: 1px solid $unnamed-color-79d4dc;
+                background-color: #FFFFFF;
+                box-shadow: 0px 0px 11px #9E9E9E61;
+                border-radius: 50px;
+                cursor: pointer;
+
+                mat-icon {
+                    display: block;
+                    position: relative;
+                    top: 15px;
+                    margin: auto;
+                    color: #BBBBBB;
+                }
+
+            }
+
+            .user-photo {
+                &__message {
+                    width: 90%;
+
+                    span {
+                        font: $unnamed-font-style-normal normal 500 .875rem Montserrat;
+                        color: $unnamed-color-656565;
+                        text-align: center;
+                    }
+                }
+            }
+
+        }
+
+        .file {
+            opacity: 0;
+            width: 0.1px;
+            height: 0.1px;
+            position: absolute;
+
+        }
+    }
+
+
+}
