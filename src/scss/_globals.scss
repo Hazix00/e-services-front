@@ -2,6 +2,7 @@
 @import './buttons';
 @import './mixins';
 
+// left border
 .separator {
   border-right: 1px solid $unnamed-color-A4A4A4;
   height: 24px;
@@ -10,17 +11,26 @@
 .dashboard-items-container {
   margin: 2.2rem 2.2rem 0 2.2rem;
 }
-
+// dashboard lists container
 .list-container {
   margin: 35px 0 0 0;
+  // liste view styles
+  &__list {
+    height: 100%;
+    padding: 0 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 10px #00000021;
+    border-radius: 25px;
+  }
 }
 
+// search bar
 .search-controller {
   padding: 8px;
   background: #FFFFFF;
   box-shadow: 0px 3px 10px #00000021;
   border-radius: 25px;
-
+  //search bar inputs style
   &__input {
     border-radius: 25px;
     padding: 10px;
@@ -40,6 +50,7 @@
     }
 
   }
+  // search bar view toggle between grid and liste
   &__layout-view-toggle {
 
     mat-button-toggle-group, mat-button-toggle {
@@ -56,9 +67,8 @@
     }
   }
 }
-
+// inputs
 .control {
-  //border: none;
   border-width: 0;
   padding: 0;
   margin: 0;
@@ -105,7 +115,7 @@ hr {
   color: $unnamed-color-349fa7;
   size: .03rem;
 }
-input {
+input { // input default style
   padding-left: 20px;
   &::placeholder {
     font: $unnamed-font-style-normal normal 500 .75rem Montserrat;
@@ -113,4 +123,8 @@ input {
     letter-spacing: 1.26px;
     color: #505050;
   }
+}
+
+.mat-divider {
+  border-top-color: #D0F6FA !important;
 }

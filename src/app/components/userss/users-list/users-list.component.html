@@ -1,4 +1,3 @@
-
-<div class="list-container">
-  <app-user-item></app-user-item>
+<div class="list-container list-container__list">
+  <app-user-item *ngFor="let item of [1,2,3,4,5]; let last = last" [last]="last"></app-user-item>
 </div>

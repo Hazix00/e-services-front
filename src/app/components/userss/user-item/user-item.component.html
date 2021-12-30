@@ -1,1 +1,30 @@
-<p>user-item works!</p>
+<div class="user" fxLayout="row">
+  <div class="user__infos" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="user__name" fxFlex>
+      <img class="user__photo" src="../../../../assets/img/anonymous-user.png" alt="">
+      <span class="loop">Mourad BALADI</span>
+    </div>
+    <span class="separator"></span>
+    <div class="user__email" fxFlex>
+      <mat-icon>email</mat-icon>
+      <span>Mail : n.abod@sothema.ma</span>
+    </div>
+    <span class="separator"></span>
+    <div class="user__phone" fxFlex>
+      <mat-icon>phone</mat-icon>
+      <span>Tél : 06 60 11 22 33</span>
+    </div>
+    <span class="separator"></span>
+    <div class="user__creation" fxFlex>
+      <mat-icon>person_outline</mat-icon>
+      <div>
+        <div>Crée par: User Name</div>
+        <div>Crée le: 14/10/2021</div>
+      </div>
+    </div>
+
+    <mat-icon class="more-btn" fxFlex="1.5">more_vert</mat-icon>
+
+  </div>
+</div>
+<mat-divider *ngIf="!last"></mat-divider>
