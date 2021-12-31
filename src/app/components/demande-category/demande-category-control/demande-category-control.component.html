@@ -17,10 +17,14 @@
   <div fxFlex="14">
     <input class="search-controller__input" fxFlexOffset="5" placeholder="Date création">
   </div>
-  <div class="search-controller__layout-view-toggle">
-    <mat-button-toggle-group name="" aria-label="">
-      <mat-button-toggle value="list"><mat-icon>list</mat-icon>Liste</mat-button-toggle>
-      <mat-button-toggle checked="true" value="grid"><mat-icon>view_comfy_sharp</mat-icon>Grille</mat-button-toggle>
-    </mat-button-toggle-group>
+  <div
+    class="search-controller__layout-view-toggle"
+    fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="layout-view layout-view__list layout-view--disabled">
+      <mat-icon>list</mat-icon>Liste
+    </div>
+    <div class="layout-view layout-view__grid">
+      <mat-icon>view_comfy_sharp</mat-icon>Grille
+    </div>
   </div>
 </div>

@@ -64,18 +64,24 @@
   // search bar view toggle between grid and liste
   &__layout-view-toggle {
 
-    mat-button-toggle-group, mat-button-toggle {
-      font-size: .7rem;
-      font: $unnamed-font-style-normal normal medium .6rem Montserrat;
-      text-align: left;
-      letter-spacing: -0.09px;
-      border: none;
-      padding: 0;
-      color: $unnamed-color-1b478e;
-      button[aria-pressed="true"] {
-        background-color: #FFFFFF;
+    font-size: 10px;
+    font: $unnamed-font-style-normal normal medium .6rem Montserrat;
+    text-align: left;
+    letter-spacing: -0.09px;
+    border: none;
+    padding: 0;
+    color: $unnamed-color-1b478e;
+
+    .layout-view {
+      @include text-with-icon;
+      cursor: pointer;
+
+      &--disabled {
+        color: #9F9F9F;
+        cursor: auto;
       }
     }
+
   }
 }
 // inputs
