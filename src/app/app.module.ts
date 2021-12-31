@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesignModule } from 'src/modules/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DemandesComponent } from './pages/dashboard/demandes/demandes.component';
@@ -29,7 +31,8 @@ import { UsersManagementComponent } from './pages/dashboard/users-management/use
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { UserItemComponent } from './components/users/user-item/user-item.component';
 import { UsersControlComponent } from './components/users/users-control/users-control.component';
-import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
+import { JsonFormComponent } from './components/json-form/json-form.component';
+// import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
 
 @NgModule({
   declarations: [
@@ -57,16 +60,20 @@ import { DemandeDetailsComponent } from './components/demandes/demande-details/d
     UsersListComponent,
     UserItemComponent,
     UsersControlComponent,
-    DemandeDetailsComponent,
+    JsonFormComponent,
+    // DemandeDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialDesignModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
