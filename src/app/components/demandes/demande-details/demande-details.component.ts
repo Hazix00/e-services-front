@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemandeDetailsComponent implements OnInit {
 
+  infosOpen = true
+  documentsOpen = true
+  paymentOpen = true
+
   constructor() { }
 
   ngOnInit(): void {

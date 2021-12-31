@@ -1,0 +1,130 @@
+@import '~/src/scss/variables';
+
+.dashboard-items-container {
+  margin-top: 1.25rem;
+}
+
+.item-container {
+  margin-bottom: .75rem;
+  margin-left: 3.4375rem;
+  margin-right: 1.25rem;
+  height: 100%;
+  padding: .75rem;
+
+  &--no-top-border-or-radius {
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+  }
+  &--full-height {
+    height: 100%;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  .client-logo {
+    margin-right: 1.75rem;
+  }
+}
+
+.demande-details {
+  mat-icon {
+    color: $unnamed-color-349fa7;
+  }
+
+  &__section-header {
+    //box sytles
+    height: 2.5rem;
+    background: transparent linear-gradient(270deg, $unnamed-color-00c2d1 0%, $unnamed-color-349fa7 100%) 0% 0% no-repeat padding-box;
+    border: 1px solid $unnamed-color-79d4dc;
+    box-shadow: 0px 0px 11px #9E9E9E61;
+    border-radius: 20px;
+    //font styles
+    font: $unnamed-font-style-normal normal bold .75rem Montserrat;
+    color: $unnamed-color-ffffff;
+    letter-spacing: 1.12px;
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #00000047;
+    text-transform: uppercase;
+
+    .two-points {
+      display: inline-block;
+      margin: 0 .3125rem;
+    }
+
+    mat-icon {
+      font-size: 1.25rem;
+      position: relative;
+      top: 2px;
+      margin-right: .4375rem;
+      color: #FFFFFF;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      padding: 0 .9375rem;
+    }
+  }
+
+  &__infos-item {
+    padding-left: .75rem;
+    mat-icon:first-child {
+      margin-right: 12px;
+    }
+
+    &__value {
+      font: $unnamed-font-style-normal normal bold .625rem Montserrat;
+      color: $unnamed-color-1b478e;
+      text-align: left;
+      letter-spacing: 1.12px;
+    }
+
+  }
+
+  &__documents {
+    .item-container {
+      border: 2px dashed $unnamed-color-1b478e;
+      border-top: none;
+    }
+    &__document {
+      mat-icon {
+        font-size: 1.125rem;
+        position: relative;
+        top: .125rem;
+      }
+      &__name {
+        margin-left: .3125rem;
+      }
+      &__file-name {
+        font: $unnamed-font-style-normal normal 500 inherit Montserrat;
+        color: $unnamed-color-1b478e;
+        margin-right: .3125rem;
+      }
+
+      .separator {
+        height: 1rem;
+      }
+    }
+  }
+}
+
+.small-icon {
+  font-size: 15px !important;
+  position: relative;
+  top: 4px;
+  &.mat-icon {
+    margin-left: .5rem;
+    margin-right: 0 !important;
+
+  }
+  &--blue {
+    color: $unnamed-color-1b478e !important;
+  }
+}
+
+.view {
+  color: $unnamed-color-349fa7;
+  cursor: pointer;
+}

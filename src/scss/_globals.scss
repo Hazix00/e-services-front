@@ -24,6 +24,17 @@
   }
 }
 
+.item-container {
+  font: $unnamed-font-style-normal normal 500 .5625rem $unnamed-font-family-poppins;
+  color: $unnamed-color-656565;
+  height: 46px;
+  background: $unnamed-color-ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid $unnamed-color-79d4dc;
+  box-shadow: 0px 0px 11px #9E9E9E61;
+  border-radius: 28px;
+  z-index: 1;
+}
+
 // search bar
 .search-controller {
   padding: 8px;
@@ -127,4 +138,9 @@ input { // input default style
 
 .mat-divider {
   border-top-color: #D0F6FA !important;
+}
+
+.client-logo {
+  width: 48px;
+  height: 29px;
 }
