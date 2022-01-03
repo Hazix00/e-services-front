@@ -1,0 +1,35 @@
+<div class="user-details" mat-dialog-content>
+  <div class="user-details__head" fxLayout="row" fxLayoutAlign="space-around center">
+    <img src="../../../../assets/img/anonymous-user.png" alt="user photo">
+    <h1 class="user-details__name">MOURAD BALADI</h1>
+    <select class="control">
+      <option value="actif">Actif</option>
+      <option value="inactif">Inactif</option>
+    </select>
+  </div>
+  <div class="user-details__body">
+    <div>
+      <mat-icon>email</mat-icon>
+      <span class="property-name">Mail :</span>
+      <span>n.abod@sothema.ma</span>
+    </div>
+    <div>
+      <mat-icon>phone</mat-icon>
+      <span class="property-name">Tél :</span>
+      <span>06 60 11 22 33</span>
+    </div>
+    <div>
+      <mat-icon>people</mat-icon>
+      <span class="property-name">Groupe :</span>
+      <span>Nom du groupe</span>
+    </div>
+    <div>
+      <mat-icon>business</mat-icon>
+      <span class="property-name">Etablissement :</span>
+      <span>Nom de l'établissement</span>
+    </div>
+  </div>
+  <div>
+    <button (click)="onNoClick()">X</button>
+  </div>
+</div>

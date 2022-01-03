@@ -37,6 +37,7 @@ import { UsersManagementTabsComponent } from './components/users/users-managemen
 import { GroupListComponent } from './components/users/group-list/group-list.component';
 import { GroupItemComponent } from './components/users/group-item/group-item.component';
 import { GroupControlComponent } from './components/users/group-control/group-control.component';
+import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { GroupControlComponent } from './components/users/group-control/group-co
     GroupListComponent,
     GroupItemComponent,
     GroupControlComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
