@@ -38,8 +38,14 @@
         fxFlex="1.5"
         (click)="show = !show">more_vert</mat-icon>
       <div class="item-menu__content  {{ show ? 'item-menu__show' : '' }}">
-        <a >Home</a>
-        <a >About</a>
+        <a>
+          <mat-icon>edit</mat-icon>
+          <span>Modifier</span>
+        </a>
+        <a >
+          <mat-icon>info_outline</mat-icon>
+          <span>Details</span>
+        </a>
       </div>
     </div>
 
