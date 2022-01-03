@@ -9,6 +9,8 @@ export class UserItemComponent implements OnInit {
 
   @Input() last: any | undefined | null
 
+  status: 'actif' | 'inactif' = 'actif'
+
   constructor() { }
 
   ngOnInit(): void {

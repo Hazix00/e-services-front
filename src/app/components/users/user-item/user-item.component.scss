@@ -14,10 +14,14 @@
     }
   }
 
-  &__name {
+  &__name-email {
     font: $unnamed-font-style-normal normal $unnamed-font-weight-600 inherit Montserrat;
     letter-spacing: $unnamed-character-spacing--0-08;
-    color: $unnamed-color-1b478e;
+
+    &__name {
+      color: $unnamed-color-1b478e;
+    }
+
   }
 
   &__photo {
@@ -40,4 +44,11 @@
     height: 2.3125rem;
     border-color: #dcd7d7;
   }
+}
+
+.actif {
+  color: green;
+}
+.inactif {
+  color: red;
 }
