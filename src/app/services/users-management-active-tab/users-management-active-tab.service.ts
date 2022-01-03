@@ -8,7 +8,7 @@ import { UsersManagementTabs } from 'src/app/constants/usersManagementTabs';
 
 export class UsersManagementActiveTabService {
 
-  private activeTab = new BehaviorSubject<UsersManagementTabs>(UsersManagementTabs.DMP_GROUPS)
+  private activeTab = new BehaviorSubject<UsersManagementTabs>(UsersManagementTabs.Clients)
 
   get = () => this.activeTab.asObservable()
   set = (value: UsersManagementTabs) => this.activeTab.next(value)

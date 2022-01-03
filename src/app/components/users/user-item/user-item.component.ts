@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UserItemComponent implements OnInit {
 
   @Input() last: any | undefined | null
-
   status: 'actif' | 'inactif' = 'actif'
+  show = false
 
   constructor() { }
 

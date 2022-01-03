@@ -32,7 +32,16 @@
       </div>
     </div>
 
-    <mat-icon class="more-btn" fxFlex="1.5">more_vert</mat-icon>
+    <div class="item-menu">
+      <mat-icon
+        class="more-btn"
+        fxFlex="1.5"
+        (click)="show = !show">more_vert</mat-icon>
+      <div class="item-menu__content  {{ show ? 'item-menu__show' : '' }}">
+        <a >Home</a>
+        <a >About</a>
+      </div>
+    </div>
 
   </div>
 </div>
