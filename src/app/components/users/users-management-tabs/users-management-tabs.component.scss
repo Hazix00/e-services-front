@@ -1,0 +1,36 @@
+@import '~/src/scss/variables';
+@import '~/src/scss/mixins';
+
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.users-management-tabs {
+  margin-left: 30px;
+}
+
+.users-management-tab {
+  @include text-with-icon;
+  justify-content: center;
+  padding: 10px 14px;
+  $font-size: .9375rem;
+  font: $unnamed-font-style-normal normal medium $font-size Montserrat;
+  color: #9F9F9F;
+  cursor: pointer;
+  &__title {
+    font-size: $font-size;
+  }
+  mat-icon {
+    font-size: 1.125rem;
+    position: relative;
+    top: 3px;
+  }
+
+  &--active {
+    color: $unnamed-color-1b478e;
+    border-bottom: 3px solid $unnamed-color-1b478e;
+    cursor: auto;
+  }
+}

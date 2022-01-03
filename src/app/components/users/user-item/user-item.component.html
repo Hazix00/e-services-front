@@ -8,7 +8,7 @@
       </div>
     </div>
     <span class="separator"></span>
-    <div class="user__phone" fxFlex>
+    <div class="user__phone" fxFlex="15">
       <mat-icon>phone</mat-icon>
       <span>Tél : 06 60 11 22 33</span>
     </div>
@@ -23,7 +23,7 @@
       <span>Nom de l'établissement</span>
     </div>
     <span class="separator"></span>
-    <div class="user__status" fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <div class="user__status" fxFlex="12" fxLayout="row" fxLayoutAlign="center center">
       <div>
         <select [(ngModel)]="status" [ngClass]="status">
           <option class="actif" value="actif">Actif</option>
@@ -31,14 +31,6 @@
         </select>
       </div>
     </div>
-    <!-- <span class="separator"></span>
-    <div class="user__creation" fxFlex>
-      <mat-icon>person_outline</mat-icon>
-      <div>
-        <div>Crée par: User Name</div>
-        <div>Crée le: 14/10/2021</div>
-      </div>
-    </div> -->
 
     <mat-icon class="more-btn" fxFlex="1.5">more_vert</mat-icon>
 

@@ -33,6 +33,10 @@ import { UserItemComponent } from './components/users/user-item/user-item.compon
 import { UsersControlComponent } from './components/users/users-control/users-control.component';
 import { JsonFormComponent } from './components/json-form/json-form.component';
 import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
+import { UsersManagementTabsComponent } from './components/users/users-management-tabs/users-management-tabs.component';
+import { GroupListComponent } from './components/users/group-list/group-list.component';
+import { GroupItemComponent } from './components/users/group-item/group-item.component';
+import { GroupControlComponent } from './components/users/group-control/group-control.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,10 @@ import { DemandeDetailsComponent } from './components/demandes/demande-details/d
     UsersControlComponent,
     JsonFormComponent,
     DemandeDetailsComponent,
+    UsersManagementTabsComponent,
+    GroupListComponent,
+    GroupItemComponent,
+    GroupControlComponent,
   ],
   imports: [
     BrowserModule,
