@@ -1,3 +1,7 @@
-<div class="list-container" fxLayout="row wrap" fxLayoutAlign="space-between start">
+<div *ngIf="layoutView === 'grid'" class="list-container" fxLayout="row wrap" fxLayoutAlign="space-between start">
   <app-demande-category-item  fxFlex="31" *ngFor="let item of [1,2,3,4,5,6]"></app-demande-category-item>
+</div>
+
+<div *ngIf="layoutView === 'list'" class="list-container list-container--liste-view  list-container__list">
+  <app-demande-category-item  *ngFor="let item of [1,2,3,4,5,6]"></app-demande-category-item>
 </div>

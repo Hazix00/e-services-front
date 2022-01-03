@@ -20,10 +20,12 @@
   <div
     class="search-controller__layout-view-toggle"
     fxFlex fxLayout="row" fxLayoutAlign="space-around center">
-    <div class="layout-view layout-view__list layout-view--disabled">
+    <div class="layout-view layout-view__list {{ layoutView === 'grid' ? 'layout-view--disabled' : '' }}"
+      (click)="toggleView('list')">
       <mat-icon>list</mat-icon>Liste
     </div>
-    <div class="layout-view layout-view__grid">
+    <div class="layout-view layout-view__grid {{ layoutView === 'list' ? 'layout-view--disabled' : '' }}"
+    (click)="toggleView('grid')">
       <mat-icon>view_comfy_sharp</mat-icon>Grille
     </div>
   </div>

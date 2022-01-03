@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutViewToggleService } from 'src/app/services/layoutViewToggle/layout-view-toggle.service';
 
 @Component({
   selector: 'app-demande-category-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemandeCategoryListComponent implements OnInit {
 
-  constructor() { }
+  layoutView! : 'grid' | 'list'
+
+  constructor(
+    private readonly layoutViewToggleService: LayoutViewToggleService
+  ) { }
 
   ngOnInit(): void {
+    this.layoutViewToggleService
+      .getCategoriesView()
+      .subscribe( value => {
+        this.layoutView = value
+        console.log(this.layoutView)
+      })
   }
 
 }

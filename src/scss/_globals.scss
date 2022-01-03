@@ -74,11 +74,9 @@
 
     .layout-view {
       @include text-with-icon;
-      cursor: pointer;
-
       &--disabled {
         color: #9F9F9F;
-        cursor: auto;
+        cursor: pointer;
       }
     }
 
