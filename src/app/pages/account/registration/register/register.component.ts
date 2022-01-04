@@ -1,4 +1,6 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from 'src/app/services/auth/register.service';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { FormService } from 'src/app/services/form/form.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -31,6 +33,8 @@ export interface FormInput {
   values?: any[];
   value?: any;
   disabled?: boolean;
+  subcategories: any[];
+  children: any[];
 }
 
 export enum ActionType {
@@ -51,66 +55,103 @@ export class RegisterComponent implements OnInit {
   user?: any = {};
   defaultValues: any[] = [];
   categories: any[] = [];
+  clientID: string | null = null;
 
   constructor(
     private readonly formService: FormService,
     private readonly userService: UserService,
-    private readonly categoriesService: CategoriesService
+    private readonly categoriesService: CategoriesService,
+    private readonly registerService: RegisterService
   ) {}
+
   ngOnInit(): void {
-    if (localStorage.getItem('dmpUser')) {
-      const user = JSON.parse(localStorage.getItem('dmpUser') || '');
-      this.user = user;
-      this.formService.getCurrentRegisterForm(user?.id).subscribe({
+    const clientID = localStorage.getItem('clientID');
+    if (clientID) {
+      this.clientID = clientID;
+      this.registerService.getCurrentRegisterForm(clientID).subscribe({
         next: (response) => {
-          console.log(response);
-          if (response?.statusCode === 200) {
+          if (response.statusCode === 200) {
             const form: Form = response.data;
-            if (form.inputs) {
-              this.inputs = form.inputs;
+
+            if (form.type !== 'category') {
+              if (form.inputs) {
+                this.inputs = form.inputs;
+              }
+              this.workflow = form?.workflow;
+              this.form = form;
+              console.log(form);
+              if (form?.inputs) {
+                this.defaultValues = form?.inputs?.map((input: any) => {
+                  return {
+                    ...input,
+                    value: input?.values[0]?.value,
+                    canEdit: input?.values[0]?.canEdit,
+                  };
+                });
+              }
             }
-            this.workflow = form?.workflow;
-            this.form = form;
-            if (form?.type === 'category') {
-              this.categoriesService.findAll().subscribe({
-                next: (response) => {
-                  console.log(response);
-                  if (response.statusCode === 200) {
-                    this.categories = response.data;
-                    this.inputs = this.categories.map((category: any) => {
-                      return {
-                        _id: category._id,
-                        label: category.title,
-                        type: 'checkbox',
-                        name: category._id,
-                      };
+
+            if (form.type === 'category') {
+              this.workflow = form?.workflow;
+              this.form = form;
+              if (form.inputs) {
+                this.inputs = form.inputs;
+                const finalArray: any[] = [];
+                this.form?.inputs?.forEach((input) => {
+                  if (input.type === 'checkbox') {
+                    finalArray.push({
+                      ...input,
+                      _id: input._id,
+                      inputId: `${input._id}`,
+                      name: input.name,
+                      value: input?.value,
                     });
                   }
-                },
-                error: (error) => {
-                  console.log(error);
-                },
-                complete: () => {
-                  console.log('complete');
-                },
-              });
+
+                  if (input?.subcategories) {
+                    input.subcategories.forEach((subcategory) => {
+                      if (subcategory.type === 'checkbox') {
+                        finalArray.push({
+                          ...subcategory,
+                          _id: `${subcategory._id}_${input._id}`,
+                          inputId: `${subcategory._id}_${input._id}`,
+                          name: subcategory.name,
+                          value: subcategory?.value,
+                        });
+                      }
+                    });
+                  }
+
+                  if (input?.children) {
+                    input.children.forEach((child) => {
+                      if (child.type === 'checkbox') {
+                        finalArray.push({
+                          ...child,
+                          _id: `${child._id}_${input._id}`,
+                          inputId: `${child._id}_${input._id}`,
+                          name: child.name,
+                          value: child?.value,
+                        });
+                      }
+                    });
+                  }
+                });
+
+                // console.log(finalArray);
+
+                this.defaultValues = finalArray;
+              }
             }
           }
         },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('complete');
-        },
+        error: (error: any) => {},
+        complete: () => {},
       });
-
-      this.getCurrentFormValues();
     } else {
-      this.formService.getRegisterForm().subscribe({
+      this.registerService.getRegisterForm().subscribe({
         next: (response) => {
           console.log(response);
-          if (response?.statusCode === 200) {
+          if (response.statusCode === 200) {
             const form: Form = response.data;
             if (form.inputs) {
               this.inputs = form.inputs;
@@ -119,210 +160,138 @@ export class RegisterComponent implements OnInit {
             this.form = form;
           }
         },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('complete');
-        },
-      });
-    }
-
-    // this.formService.getForm(this.currentForm).subscribe((response) => {
-    //   if (response.statusCode === 200) {
-    //     const form: Form = response.data;
-    //     this.inputs = form.inputs;
-    //     this.workflow = form?.workflow;
-    //     this.form = form;
-    //     // console.log(form.inputs);
-    //   }
-    // });
-    // this.userService.getUser().subscribe((response) => {
-    //   console.log(response);
-    //   if (response) {
-    //     this.user = response;
-    //     const userWorkflows = this.user.workflows;
-    //     console.log(userWorkflows);
-    //     const userForms = userWorkflows
-    //       .map((workflow: any) => {
-    //         return workflow.forms;
-    //       })
-    //       .flat();
-    //     const currentForm = userForms?.find(
-    //       (form: any) => form._id === this.currentForm
-    //     );
-    //     this.defaultValues = currentForm?.values;
-    //     console.log(this.defaultValues);
-    //   }
-    // });
-  }
-
-  submitForm(formId: string, data: any) {
-    this.formLoading = true;
-    if (localStorage.getItem('dmpUser')) {
-      const user = JSON.parse(localStorage.getItem('dmpUser') || '');
-      data.user = user;
-      data.workflowId = this.form?.workflow?._id;
-    }
-    this.formService.submitForm(formId, data).subscribe({
-      next: (response) => {
-        console.log(response);
-        if (response.statusCode === 201) {
-          const form: Form = response.data;
-          if (form?.inputs) {
-            this.inputs = form.inputs;
-          }
-          this.workflow = form?.workflow?.title;
-          this.form = form;
-
-          if (form?.type === 'category') {
-            this.categoriesService.findAll().subscribe({
-              next: (response: any) => {
-                console.log(response);
-                if (response.statusCode === 200) {
-                  this.categories = response.data;
-                  this.inputs = this.categories.map((category: any) => {
-                    return {
-                      _id: category._id,
-                      label: category.title,
-                      type: 'checkbox',
-                      name: category._id,
-                    };
-                  });
-                }
-              },
-              error: (error: any) => {
-                console.log(error);
-              },
-              complete: () => {
-                console.log('complete');
-              },
-            });
-          }
-        }
-
-        if (response.statusCode >= 400) {
-          this.errors = [response.message].flat();
-        }
-      },
-      error: (response) => {
-        const { error } = response;
-        this.errors = [error?.message || 'Error'].flat();
-        this.formLoading = false;
-      },
-      complete: () => {
-        // console.log('complete');
-        this.formLoading = false;
-      },
-    });
-  }
-
-  getCurrentFormValues() {
-    if (localStorage.getItem('dmpUser')) {
-      const user = JSON.parse(localStorage.getItem('dmpUser') || '');
-      this.user = user;
-      this.formService.getCurrentRegisterFormValues(user?.id).subscribe({
-        next: (response) => {
-          console.log(response);
-          if (response?.statusCode === 200) {
-            this.defaultValues = response.data?.map((item: any) => {
-              return {
-                ...item,
-                _id: item?.inputId,
-              };
-            });
-          }
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('complete');
-        },
+        error: (error: any) => {},
+        complete: () => {},
       });
     }
   }
 
   onSubmit(data: any) {
-    if (!this.form?._id) return;
-
-    if (this.form?.action === ActionType.REGISTER_USER) {
-      const userInfos = Object.entries(data).reduce(
-        (acc: any, curr: any, index) => {
-          // console.log(curr);
-          const input: any = this.inputs?.find(
-            (input) => `${input._id}` === `${curr[0]}`
-          );
-
-          if (
-            input &&
-            (input.name === 'name' ||
-              input.name === 'email' ||
-              input.name === 'password')
-          ) {
-            acc[input.name] = curr[1];
-          }
-          return acc;
-        },
-        {}
-      );
-      // console.log('userInfo', userInfos);
-      if (localStorage.getItem('dmpUser')) {
-        this.submitForm(this.form?._id || '', data);
-      } else {
-        this.userService.registerUser(userInfos).subscribe({
-          next: (response) => {
-            console.log(response);
-            localStorage.setItem('dmpUser', JSON.stringify(response?.user));
-            data.user = response?.user;
-            this.submitForm(this.form?._id || '', data);
-          },
-          error: (error) => {
-            console.log(error);
-          },
-          complete: () => {
-            console.log('completed');
-          },
-        });
-      }
-    } else {
-      this.formLoading = true;
-      this.submitForm(this.form?._id, data);
+    data.formId = this.form?._id;
+    console.log(data);
+    if (this.clientID) {
+      data.userId = this.clientID;
     }
-  }
+    if (this.form?.type === 'category') {
+      const finalArray: any[] = [];
+      this.form?.inputs?.forEach((input) => {
+        if (input.type === 'checkbox') {
+          finalArray.push({
+            _id: input._id,
+            inputId: `${input._id}`,
+            name: input.name,
+            value: data[input._id],
+          });
+        }
 
-  getPreviousForm() {
-    if (localStorage.getItem('dmpUser')) {
-      const user = JSON.parse(localStorage.getItem('dmpUser') || '');
-      this.formService
-        .getPreviousForm(this.form?._id, {
-          user,
-          workflowId: this.form?.workflow?._id,
-        })
-        .subscribe({
-          next: (response) => {
-            console.log(response);
-            if (response.statusCode === 200) {
-              const form: Form = response.data;
-              if (form.inputs) {
-                this.inputs = form.inputs;
-              }
-              this.workflow = form?.workflow?.title;
-              this.form = form;
-              this.getCurrentFormValues();
+        if (input?.subcategories) {
+          input.subcategories.forEach((subcategory) => {
+            if (subcategory.type === 'checkbox') {
+              finalArray.push({
+                _id: `${subcategory._id}_${input._id}`,
+                inputId: `${subcategory._id}_${input._id}`,
+                name: subcategory.name,
+                value: data[`${subcategory._id}_${input._id}`],
+              });
             }
-          },
-          error: (error) => {
-            console.log(error);
-          },
-          complete: () => {
-            console.log('complete');
-          },
-        });
+          });
+        }
+
+        if (input?.children) {
+          input.children.forEach((child) => {
+            if (child.type === 'checkbox') {
+              finalArray.push({
+                _id: `${child._id}_${input._id}`,
+                inputId: `${child._id}_${input._id}`,
+                name: child.name,
+                value: data[`${child._id}_${input._id}`],
+              });
+            }
+          });
+        }
+      });
+      data.inputs = [...finalArray];
+      // console.log(data);
     }
+    this.registerService.submitregisterForm(data).subscribe({
+      next: (response) => {
+        // console.log(response);
+
+        if (response.statusCode === 201) {
+          if (response?.data?.userId) {
+            localStorage.setItem('clientID', response?.data?.userId);
+            this.clientID = response?.data?.userId;
+          }
+
+          if (response?.data?.form) {
+            const responseForm = response?.data?.form;
+            const form: Form = responseForm;
+            this.form = responseForm;
+            if (form.inputs) {
+              this.inputs = responseForm.inputs;
+
+              const inputsValues = form?.inputs?.map((input: any) => {
+                return {
+                  ...input,
+                  value:
+                    input?.values && input?.values?.length > 0
+                      ? input?.values[0]?.value
+                      : undefined,
+                  canEdit:
+                    input?.values && input?.values?.length > 0
+                      ? input?.values[0]?.canEdit
+                      : undefined,
+                };
+              });
+
+              if (!inputsValues.every((input) => !input.value)) {
+                this.defaultValues = inputsValues;
+              }
+
+              // this.defaultValues = form?.inputs?.map((input: any) => {
+              //   return {
+              //     ...input,
+              //     value: input?.values[0]?.value,
+              //     canEdit: input?.values[0]?.canEdit,
+              //   };
+              // });
+            }
+            this.workflow = responseForm?.workflow;
+          }
+        }
+      },
+      error: (error: any) => {},
+      complete: () => {},
+    });
   }
 
   onPrevious(data: any) {
-    console.log(data);
+    if (!this.clientID) return;
+    this.registerService
+      .getPreviousRegisterForm(this.clientID, this.form._id)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          if (response.statusCode === 200) {
+            const form: Form = response.data;
+            if (form.inputs) {
+              this.inputs = form.inputs;
+            }
+            this.workflow = form?.workflow;
+            this.form = form;
+            if (form?.inputs) {
+              this.defaultValues = form?.inputs?.map((input: any) => {
+                return {
+                  ...input,
+                  value: input?.values[0]?.value,
+                  canEdit: input?.values[0]?.canEdit,
+                };
+              });
+            }
+          }
+        },
+        error: (error: any) => {},
+        complete: () => {},
+      });
   }
 }

@@ -17,7 +17,10 @@ const insert = (arr: any[], index: number, newItem: any) => [
 @Component({
   selector: 'app-json-form',
   templateUrl: './json-form.component.html',
-  styleUrls: ['./json-form.component.scss'],
+  styleUrls: [
+    './json-form.component.scss',
+    '../../pages/account/register-informations/activities/activities.component.scss',
+  ],
 })
 export class JsonFormComponent implements OnInit {
   //! Inputs
@@ -73,7 +76,7 @@ export class JsonFormComponent implements OnInit {
 
   createForm(inputs: FormInput[]): void {
     if (!inputs) return;
-    inputs.forEach((input) => {
+    inputs.forEach((input, index) => {
       const validation = input?.validation;
       const validators: any[] = [];
 
@@ -108,8 +111,27 @@ export class JsonFormComponent implements OnInit {
         this.formBuilder.control(input?.value, validators)
       );
 
-      if (this.defaultValues.length > 0) {
-        this.showNext = this.defaultValues.every((value) => !value?.canEdit);
+      if (input?.subcategories?.length > 0) {
+        input.subcategories.forEach((subcategory) => {
+          this.formGroup.addControl(
+            `${subcategory._id}_${input._id}`,
+            this.formBuilder.control(subcategory?.value, validators)
+          );
+        });
+      }
+
+      if (input?.children?.length > 0) {
+        input.children.forEach((child) => {
+          this.formGroup.addControl(
+            `${child._id}_${input._id}`,
+            this.formBuilder.control(child?.value, validators)
+          );
+        });
+      }
+      // console.log('this.defaultValues', this.defaultValues);
+
+      if (this.defaultValues.length > 0 && this.form.type !== 'category') {
+        this.showNext = this.defaultValues.length > 0;
         const defaultValue = this.defaultValues.find(
           (value) => value?._id === input._id
         );
@@ -122,14 +144,24 @@ export class JsonFormComponent implements OnInit {
         }
       }
     });
+
+    if (this.defaultValues.length > 0) {
+      this.showNext = true;
+      this.defaultValues?.forEach((value: any) => {
+        // console.log(value);
+        this.formGroup.controls[value._id].disable();
+      });
+    }
   }
 
   submit() {
     if (this.formGroup.valid) {
       // console.log('submit', this.formGroup.value);
       this.onSubmit.emit(this.formGroup.value);
+
+      // console.log(this.formGroup.value, 'hello');
     } else {
-      console.log(this.formGroup.value);
+      // console.log(this.formGroup.value);
       Object.values(this.formGroup.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
@@ -159,6 +191,18 @@ export class JsonFormComponent implements OnInit {
   }
 
   goPrev() {
-    this.onPrevious.emit(this.formGroup.value);
+    console.log('goPrev');
+    this.onPrevious.emit();
+  }
+
+  onCheckboxChange(event: any, childId: string, inputId?: string) {
+    console.log(event, childId, inputId);
+    if (!inputId) {
+      this.formGroup.controls[childId].setValue(event.target.checked);
+    } else {
+      this.formGroup.controls[`${childId}_${inputId}`].setValue(
+        event.target.checked
+      );
+    }
   }
 }

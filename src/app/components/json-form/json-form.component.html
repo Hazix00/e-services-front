@@ -16,7 +16,7 @@
           <span>Sélectionner votre image</span>
         </div>
       </div> -->
-      <div *ngFor="let input of inputs">
+      <div *ngFor="let input of inputs; index as i">
         <div
           *ngIf="
             ['text', 'number', 'password', 'email', 'tel'].includes(input.type)
@@ -31,6 +31,55 @@
             placeholder="{{ input?.label }}"
           />
         </div>
+
+        <div *ngIf="form.type === 'category'" class="activities__section">
+          <div class="activities__title-container">
+            <input
+              (change)="onCheckboxChange($event, input._id)"
+              formControlName="{{ input._id }}"
+              type="{{ input.type }}"
+              [checked]="input.value"
+            />
+            <label>{{ input?.label }} </label>
+          </div>
+          <div
+            *ngIf="input.subcategories.length > 0"
+            class="activities__section__body"
+          >
+            <div
+              class="activities__service-types"
+              fxLayout="row"
+              fxLayoutAlign="space-between center"
+            >
+              <div *ngFor="let subcategory of input.subcategories">
+                <input
+                  (change)="
+                    onCheckboxChange($event, subcategory._id, input._id)
+                  "
+                  type="{{ subcategory?.type }}"
+                  formControlName="{{ subcategory._id }}_{{ input._id }}"
+                  [checked]="subcategory.value"
+                />
+                <label for="{{ subcategory._id }}">{{
+                  subcategory?.label
+                }}</label>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="input.children.length > 0" class="activities__products">
+            <div *ngFor="let child of input.children">
+              <input
+                (change)="onCheckboxChange($event, child._id, input._id)"
+                type="{{ child?.type }}"
+                [checked]="child.value"
+                formControlName="{{ child._id }}_{{ input._id }}"
+              />
+              <label for="">{{ child?.label }}</label>
+            </div>
+          </div>
+        </div>
+
         <!-- <div
           *ngIf="['password'].includes(input.type)"
           class="control control-input"
@@ -90,7 +139,7 @@
       >
         <div class="control">
           <button type="button" class="btn btn-invert" (click)="goPrev()">
-            Annuler
+            Retour
           </button>
         </div>
         <div *ngIf="!showNext" class="control">
