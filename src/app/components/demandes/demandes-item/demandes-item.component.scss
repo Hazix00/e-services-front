@@ -2,16 +2,6 @@
 @import '~/src/scss/mixins';
 
 .demande {
-  font: $unnamed-font-style-normal normal 500 .5625rem $unnamed-font-family-poppins;
-  color: $unnamed-color-656565;
-  height: 46px;
-  background: $unnamed-color-ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid $unnamed-color-79d4dc;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 11px #9E9E9E61;
-  border-radius: 28px;
-  z-index: 1;
-
   &__infos {
     .id {
       span {

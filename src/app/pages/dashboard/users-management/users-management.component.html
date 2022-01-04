@@ -1,4 +1,7 @@
 <div class="dashboard-items-container">
-  <app-users-control></app-users-control>
-  <app-users-list></app-users-list>
+  <app-group-control *ngIf="activeTab === UsersManagementTabs.DMP_GROUPS"></app-group-control>
+  <app-users-control *ngIf="activeTab !== UsersManagementTabs.DMP_GROUPS"></app-users-control>
+  <app-users-management-tabs></app-users-management-tabs>
+  <app-users-list *ngIf="activeTab !== UsersManagementTabs.DMP_GROUPS"></app-users-list>
+  <app-group-list *ngIf="activeTab === UsersManagementTabs.DMP_GROUPS"></app-group-list>
 </div>

@@ -32,7 +32,12 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
 import { UserItemComponent } from './components/users/user-item/user-item.component';
 import { UsersControlComponent } from './components/users/users-control/users-control.component';
 import { JsonFormComponent } from './components/json-form/json-form.component';
-// import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
+import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
+import { UsersManagementTabsComponent } from './components/users/users-management-tabs/users-management-tabs.component';
+import { GroupListComponent } from './components/users/group-list/group-list.component';
+import { GroupItemComponent } from './components/users/group-item/group-item.component';
+import { GroupControlComponent } from './components/users/group-control/group-control.component';
+import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,12 @@ import { JsonFormComponent } from './components/json-form/json-form.component';
     UserItemComponent,
     UsersControlComponent,
     JsonFormComponent,
-    // DemandeDetailsComponent,
+    DemandeDetailsComponent,
+    UsersManagementTabsComponent,
+    GroupListComponent,
+    GroupItemComponent,
+    GroupControlComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

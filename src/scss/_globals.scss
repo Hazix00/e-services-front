@@ -1,6 +1,47 @@
 @import './variables';
-@import './buttons';
 @import './mixins';
+
+html, body { height: 100%; width: 100%; }
+* { margin: 0; font-family: $primary-font; }
+
+input, select, button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+hr {
+  width: 45%;
+  margin-right: auto;
+  margin-left: auto;
+  color: $unnamed-color-349fa7;
+  size: .03rem;
+}
+input { // input default style
+  padding-left: 20px;
+  &::placeholder {
+    font: $unnamed-font-style-normal normal 500 .75rem Montserrat;
+    text-align: left;
+    letter-spacing: 1.26px;
+    color: #505050;
+  }
+}
+
+.primary-color {
+  color: mat-color($my-primary) !important;
+}
+.accent-color {
+  color: mat-color($my-accent) !important;
+}
+
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 8px;
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
+}
 
 // left border
 .separator {
@@ -24,7 +65,24 @@
   }
 }
 
+.item-container {
+  font: $unnamed-font-style-normal normal 500 .5625rem $unnamed-font-family-poppins;
+  color: $unnamed-color-656565;
+  height: 46px;
+  background: $unnamed-color-ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid $unnamed-color-79d4dc;
+  box-shadow: 0px 0px 11px #9E9E9E61;
+  border-radius: 28px;
+  z-index: 1;
+}
+
 // search bar
+@mixin searchControlStyle {
+  border-radius: 25px;
+  padding: 10px;
+  width: 85%;
+  border: 2px solid #E2F1F2;
+}
 .search-controller {
   padding: 8px;
   background: #FFFFFF;
@@ -32,39 +90,50 @@
   border-radius: 25px;
   //search bar inputs style
   &__input {
-    border-radius: 25px;
-    padding: 10px;
-    width: 85%;
-    height: 15px;
-    background: $unnamed-color-ffffff 0% 0% no-repeat padding-box;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 2px solid #E2F1F2;
-
+    display: flex;
+    align-items: center;
+    @include searchControlStyle;
+    height: 40px;
+  }
+  &__text-input {
+    padding-left: 5px;
+    height: 40px;
+    outline: none;
     &::placeholder {
       color: $unnamed-color-888888;
-      font-size: .8em;
+      font-size: .625rem;
     }
     &:focus {
       outline: none;
       border-color: $unnamed-color-00a7a5;
     }
-
   }
+  &__select {
+    @include searchControlStyle;
+    &__placeholder {
+      color: #BBBBBB !important;
+    }
+  }
+
   // search bar view toggle between grid and liste
   &__layout-view-toggle {
 
-    mat-button-toggle-group, mat-button-toggle {
-      font-size: .7rem;
-      font: $unnamed-font-style-normal normal medium .6rem Montserrat;
-      text-align: left;
-      letter-spacing: -0.09px;
-      border: none;
-      padding: 0;
-      color: $unnamed-color-1b478e;
-      button[aria-pressed="true"] {
-        background-color: #FFFFFF;
+    font-size: 10px;
+    font: $unnamed-font-style-normal normal medium .6rem Montserrat;
+    text-align: left;
+    letter-spacing: -0.09px;
+    border: none;
+    padding: 0;
+    color: $unnamed-color-1b478e;
+
+    .layout-view {
+      @include text-with-icon;
+      &--disabled {
+        color: #9F9F9F;
+        cursor: pointer;
       }
     }
+
   }
 }
 // inputs
@@ -93,38 +162,21 @@
       margin-left: 12px;
     }
   }
-
+  select {
+    text-align-last:center;
+    color: $unnamed-color-1b478e;
+  }
 
 }
 .control, hr {
   margin-bottom: .9375rem;
 }
-input, select, button {
-  outline: none;
-  border: none;
-  background-color: transparent;
-}
-select {
-  text-align-last:center;
-  color: $unnamed-color-1b478e;
-}
-hr {
-  width: 45%;
-  margin-right: auto;
-  margin-left: auto;
-  color: $unnamed-color-349fa7;
-  size: .03rem;
-}
-input { // input default style
-  padding-left: 20px;
-  &::placeholder {
-    font: $unnamed-font-style-normal normal 500 .75rem Montserrat;
-    text-align: left;
-    letter-spacing: 1.26px;
-    color: #505050;
-  }
-}
 
 .mat-divider {
   border-top-color: #D0F6FA !important;
+}
+
+.client-logo {
+  width: 48px;
+  height: 29px;
 }

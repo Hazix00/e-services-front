@@ -4,23 +4,4 @@
 @import './scss/variables';
 @import './scss/icons';
 @import './scss/globals';
-
-html, body { height: 100%; width: 100%; }
-* { margin: 0; font-family: $primary-font; }
-
-
-.primary-color {
-  color: mat-color($my-primary) !important;
-}
-.accent-color {
-  color: mat-color($my-accent) !important;
-}
-
-.icon {
-  display: inline-block;
-  height: 30px;
-  margin: 0 8px;
-  text-align: center;
-  vertical-align: middle;
-  width: 20%;
-}
+@import './scss/buttons';

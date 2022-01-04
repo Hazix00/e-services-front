@@ -1,0 +1,35 @@
+@import '~/src/scss/variables';
+@import '~/src/scss/mixins';
+
+.group {
+  font: $unnamed-font-style-normal normal 500 .6875rem $unnamed-font-family-poppins;
+  color: #9F9F9F;
+  // height: 3.25rem;
+  padding: 15px;
+
+  &__infos {
+    > div {
+      @include text-with-icon;
+      padding-left: .75rem;
+    }
+  }
+
+  &__name {
+    color: $unnamed-color-1b478e
+  }
+
+  mat-icon {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .more-btn { // context menu button
+    margin: 0;
+    cursor: pointer;
+    color: #a5bac7;
+  }
+
+  .separator { //overrite separator styles
+    height: 2.3125rem;
+    border-color: #dcd7d7;
+  }
+}

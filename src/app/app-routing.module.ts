@@ -11,6 +11,7 @@ import { RegistrationComponent } from './pages/account/registration/registration
 import { GeneralitiesComponent } from './pages/account/register-informations/generalities/generalities.component';
 import { ActivitiesComponent } from './pages/account/register-informations/activities/activities.component';
 import { UsersManagementComponent } from './pages/dashboard/users-management/users-management.component';
+import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: '', component: DemandesCategoriesComponent },
       { path: 'demandes-categories', component: DemandesCategoriesComponent },
       { path: 'demandes', component: DemandesComponent },
+      { path: 'demandes/:demande_id', component: DemandeDetailsComponent },
       { path: 'users-management', component: UsersManagementComponent },
     ],
   },

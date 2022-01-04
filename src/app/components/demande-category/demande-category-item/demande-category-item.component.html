@@ -1,5 +1,4 @@
-
-<div class="category" fxLayout="column">
+<div *ngIf="layoutView === 'grid'" class="category item-container" fxLayout="column">
   <div class="category__top-row" fxFlex="70" fxLayout="row" fxLayoutAlign="center center">
     <div class="category__dossier" fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
       <img class="category__dossier__icon" src="../../../../assets/img/Icon ionic-ios-folder-open.svg" alt="">
@@ -42,16 +41,52 @@
   </div>
 </div>
 
-<!-- <div class="category" fxLayout="row wrap">
-  <div fxFlex="25%"></div>
-  <div fxFlex="75">
-    <h6>Le titre du dossier</h6>
+<div *ngIf="layoutView === 'list'" class="category--list-view" fxLayout="row" fxLayoutAlign="none center">
+  <div class="category--list-view__dossier" fxFlex="8" fxLayoutAlign="space-around center">
+    <img class="category--list-view__dossier__icon" src="../../../../assets/img/Icon ionic-ios-folder-open.svg" alt="">
+    <span class="category--list-view__dossier__id">D01</span>
   </div>
-  <div fxFlex="25%" class="category__doss-id">icon</div>
-  <div fxFlex="75">
-    <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem,</small>
+  <span class="separator"></span>
+  <div fxFlex="70">
+    <h4 class="category__title">Titre du dossier</h4>
   </div>
-  <div fxFlex="60">date</div>
-  <div fxFlex="40">icons</div>
-</div> -->
+  <span class="separator"></span>
+  <div fxFlex="15" fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="category__demandes-in-progress">
+      <span>5</span>
+      <span class="icon-Icon_ionic-ios-folder-open"></span>
+    </div>
+    <div class="category__demandes-ok">
+      <span>4</span>
+      <span class="icon-ckeck"></span>
+    </div>
+    <div class="category__demandes-suspended">
+      <span>2</span>
+      <span class="icon-pause"></span>
+    </div>
+    <div class="category__demandes-rejected">
+      <span>1</span>
+      <span class="icon-block"></span>
+    </div>
+  </div>
+  <span class="separator"></span>
+  <div fxFlex="75">
+    <small class="category__description">Lorem ipsum dolor sit amet consectetu adipisicing elit. Dolorem, veniam animi sapiente quasi incidunt quod sunt</small>
+  </div>
+  <span class="separator"></span>
+  <div fxFlex="10" fxLayout="column">
+    <div class="category__user">
+      <span>Achraf Mouadi</span>
+    </div>
+    <div class="category__date">
+      <span>14/10/2021 - 19:00</span>
+    </div>
+  </div>
+  <div fxFlex="6">
+    <button class="category--list-view__goto-details" mat-icon-button>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-divider></mat-divider>
 

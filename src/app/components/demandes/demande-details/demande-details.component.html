@@ -1,0 +1,248 @@
+<div class="dashboard-items-container">
+  <div class="demande-details">
+    <div class="demande-details__infos">
+      <!-- ################  SECTION 1  ################# -->
+      <div
+        class="demande-details__section-header"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        (click)="infosOpen = !infosOpen">
+        <div>
+          <mat-icon>keyboard_arrow_{{ infosOpen ? 'up' : 'down' }}</mat-icon>
+          <span>Demandeur</span>
+        </div>
+        <span class="separator"></span>
+        <div>
+          <span>N°</span>
+          <span class="two-points">:</span>
+          <span>BC356</span>
+        </div>
+        <span class="separator"></span>
+        <div>
+          <mat-icon>date_range</mat-icon>
+          <span>Date</span>
+          <span class="two-points">:</span>
+          <span>14/10/2021 - 19:00</span>
+        </div>
+      </div>
+      <ng-container *ngIf="infosOpen">
+        <div
+          class="item-container item-container--no-top-border-or-radius"
+          fxLayout="row"
+          fxLayoutAlign="none center">
+
+          <div class="demande-details__infos-item" fxFlex="30">
+            <img class="client-logo" src="../../../../assets/img/img-200x200.png" alt="">
+            <div>
+              <div class="demande-details__infos-item__property">Nom d'Etablissement</div>
+              <div class="demande-details__infos-item__value">PFIZER</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>person</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Nom et prénom</div>
+              <div class="demande-details__infos-item__value">Achraf Mouadi</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex="25">
+            <mat-icon>alternate_email</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">E-mail</div>
+              <div class="demande-details__infos-item__value">a.ganza@pharma5.ma</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex="25">
+            <mat-icon>phone_in_talk</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">N° de téléphone</div>
+              <div class="demande-details__infos-item__value">0660 11 22 33</div>
+            </div>
+          </div>
+        </div>
+        <div class="item-container" fxLayout="row" fxLayoutAlign="none center">
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>info_outline</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Type de demande</div>
+              <div>
+                <span class="demande-details__infos-item__value">Médicament</span>
+                <mat-icon class="small-icon small-icon--blue">check_circle</mat-icon>
+                <span class="view">Intermédiaire (Semi-fini)</span>
+                <mat-icon class="small-icon small-icon--blue">check_circle</mat-icon>
+                <span class="view">Vrac</span>
+                <mat-icon class="small-icon small-icon--blue">check_circle</mat-icon>
+                <span class="view">Fini</span>
+              </div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>info_outline</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Nom du Médicament</div>
+              <div class="demande-details__infos-item__value">TEFOVIR 1000</div>
+            </div>
+          </div>
+        </div>
+        <div class="item-container" fxLayout="row" fxLayoutAlign="none center">
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>info_outline</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Dénomination de la substance active</div>
+              <div>
+                <select class="demande-details__infos-item__value" name="" id="">
+                  <option value="">Paracétamol (+3)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>info_outline</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Dosage du Médicament</div>
+              <div class="demande-details__infos-item__value">200 MG</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>info_outline</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Forme du Médicament</div>
+              <div class="demande-details__infos-item__value">Comprimé</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex>
+            <mat-icon>info_outline</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Présentation du Médicament</div>
+              <div class="demande-details__infos-item__value">Boite de 3 unité</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- ################  SECTION 2  ################# -->
+    <div class="demande-details__documents">
+      <div
+        class="demande-details__section-header"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        (click)="documentsOpen = !documentsOpen">
+        <div>
+          <mat-icon>keyboard_arrow_{{ documentsOpen ? 'up' : 'down' }}</mat-icon>
+          <span>Documents Requis pour la demande (3)</span>
+        </div>
+      </div>
+      <ng-container *ngIf="documentsOpen">
+        <div class="item-container item-container--no-top-border-or-radius">
+          <div class="demande-details__documents__document" fxLayout="row">
+            <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon>description</mat-icon>
+                <span class="demande-details__documents__document__name">Lettre de demande signée, datée et cachetée par Pharmacien Responsable :</span>
+              </div>
+              <span class="demande-details__documents__document__file-name">Lettre_document_cachete.pdf</span>
+            </div>
+            <span class="separator"></span>
+            <div>
+              <mat-icon class="small-icon">visibility</mat-icon>
+              <span class="view">Visualiser</span>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="demande-details__documents__document" fxLayout="row">
+            <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon>image</mat-icon>
+                <span class="demande-details__documents__document__name">AMM en vigueur au Maroc</span>
+              </div>
+              <span class="demande-details__documents__document__file-name">AMM_en_vigueur_au_Maroc.jpeg</span>
+            </div>
+            <span class="separator"></span>
+            <div>
+              <mat-icon class="small-icon">visibility</mat-icon>
+              <span class="view">Visualiser</span>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="demande-details__documents__document" fxLayout="row">
+            <div fxFlex="90" fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon>description</mat-icon>
+                <span class="demande-details__documents__document__name">Formulaires de visa sanitaire signé, datés et cachetée par le Pharmacien Responsableselon le modèle etabli par la DMP</span>
+              </div>
+              <span class="demande-details__documents__document__file-name">Formulaires_de_visa_sanitaire_signé_datés_et_cachetée.pdf</span>
+            </div>
+            <span class="separator"></span>
+            <div>
+              <mat-icon class="small-icon">visibility</mat-icon>
+              <span class="view">Visualiser</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- ################  SECTION 3  ################# -->
+    <div class="demande-details__payment">
+      <div
+        class="demande-details__section-header"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        (click)="paymentOpen = ! paymentOpen">
+        <div>
+          <mat-icon>keyboard_arrow_{{ paymentOpen ? 'up' : 'down' }}</mat-icon>
+          <span>Paiement des droit fixes d'enregistrement</span>
+        </div>
+      </div>
+      <ng-container *ngIf="paymentOpen">
+        <div
+          class="item-container item-container--no-top-border-or-radius"
+          fxLayout="row"
+          fxLayoutAlign="none center">
+
+          <div class="demande-details__infos-item" fxFlex="20">
+            <mat-icon>tag</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Numéro de paiement</div>
+              <div class="demande-details__infos-item__value">BC356</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex="20">
+            <mat-icon>date_range</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Date de paiement</div>
+              <div class="demande-details__infos-item__value">14/10/2021 - 20:13</div>
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item" fxFlex="25">
+            <mat-icon>local_atm</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Type de paiement</div>
+
+                <span class="demande-details__infos-item__value">Fiche liquidation</span>
+                <mat-icon class="small-icon">visibility</mat-icon>
+                <span class="view">Visualiser</span>
+
+            </div>
+          </div>
+          <span class="separator"></span>
+          <div class="demande-details__infos-item">
+            <mat-icon>local_atm</mat-icon>
+            <div>
+              <div class="demande-details__infos-item__property">Montant de la prestation</div>
+              <div class="demande-details__infos-item__value">12000 Dhs</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
