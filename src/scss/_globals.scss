@@ -1,5 +1,4 @@
 @import './variables';
-@import './buttons';
 @import './mixins';
 
 html, body { height: 100%; width: 100%; }
@@ -91,18 +90,23 @@ input { // input default style
   border-radius: 25px;
   //search bar inputs style
   &__input {
+    display: flex;
+    align-items: center;
     @include searchControlStyle;
-    height: 15px;
-
+    height: 40px;
+  }
+  &__text-input {
+    padding-left: 5px;
+    height: 40px;
+    outline: none;
     &::placeholder {
       color: $unnamed-color-888888;
-      font-size: .8em;
+      font-size: .625rem;
     }
     &:focus {
       outline: none;
       border-color: $unnamed-color-00a7a5;
     }
-
   }
   &__select {
     @include searchControlStyle;
@@ -110,6 +114,7 @@ input { // input default style
       color: #BBBBBB !important;
     }
   }
+
   // search bar view toggle between grid and liste
   &__layout-view-toggle {
 
@@ -174,15 +179,4 @@ input { // input default style
 .client-logo {
   width: 48px;
   height: 29px;
-}
-
-.btn--control-add {
-  border-radius: 15px;
-  border: 2px solid $unnamed-color-00c2d1;
-  padding: 0;
-  width: 37px;
-  height: 39px;
-  mat-icon {
-    font-size: 20px;
-  }
 }

@@ -1,21 +1,46 @@
-<div class="search-controller" fxLayout="row" fxLayoutAlign="none center">
-  <div fxFlex="8">
-    <input class="search-controller__input" fxFlexOffset="5" placeholder="ID">
+<div class="search-controller" fxLayout="row" fxLayoutAlign="none center" fxLayoutGap="5px">
+  <div class="search-controller__input" fxFlex="8">
+    <input class="search-controller__text-input" placeholder="ID">
   </div>
-  <div fxFlex="16">
-    <input class="search-controller__input" fxFlexOffset="5" placeholder="Catégorie">
+  <div class="search-controller__input" fxFlex="16">
+    <input class="search-controller__text-input" placeholder="Catégorie">
   </div>
-  <div fxFlex="16">
-    <input class="search-controller__input" fxFlexOffset="5" placeholder="Famille">
+  <div class="search-controller__input" fxFlex="16">
+    <input class="search-controller__text-input" placeholder="Famille">
   </div>
-  <div fxFlex="18">
-    <input class="search-controller__input" fxFlexOffset="5" placeholder="Nbr de dossier">
+
+  <div fxFlex="20" class="search-controller__input" fxLayout="row" fxLayoutAlign="none center">
+    <div fxLayout="row" fxLayoutAlign="none center" fxLayoutGap="3px">
+      <div>
+        <div fxLayout="row" fxLayoutAlign="none center">
+          <input class="radio-btn" type="radio" name="status" id="">
+          <span class="icon-Icon_ionic-ios-folder-open"></span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="none center">
+          <input class="radio-btn" type="radio" name="status" id="">
+          <span class="icon-ckeck"></span>
+        </div>
+      </div>
+      <span class="separator"></span>
+      <div>
+        <div fxLayout="row" fxLayoutAlign="none center">
+          <input class="radio-btn" type="radio" name="status" id="">
+          <span class="icon-pause"></span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="none center">
+          <input class="radio-btn" type="radio" name="status" id="">
+          <span class="icon-block"></span>
+        </div>
+      </div>
+    </div>
+    <input class="search-controller__text-input" placeholder="Nbr de dossiers">
   </div>
-  <div fxFlex="14">
-    <input class="search-controller__input" fxFlexOffset="5" placeholder="Créateur">
+
+  <div class="search-controller__input" fxFlex="14">
+    <input class="search-controller__text-input" placeholder="Créateur">
   </div>
-  <div fxFlex="14">
-    <input class="search-controller__input" fxFlexOffset="5" placeholder="Date création">
+  <div class="search-controller__input" fxFlex="14">
+    <input class="search-controller__text-input" placeholder="Date création">
   </div>
   <div
     class="search-controller__layout-view-toggle"

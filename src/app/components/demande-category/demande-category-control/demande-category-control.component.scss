@@ -1,2 +1,17 @@
+@import '~/src/scss/variables';
+@import '~/src/scss/mixins';
 
+$font-size: .625rem;
 
+.icon-Icon_ionic-ios-folder-open {
+  @include svg-icon($unnamed-color-656565, $font-size);
+}
+.icon-ckeck {
+  @include svg-icon($unnamed-color-15a10b, $font-size);
+}
+.icon-pause {
+  @include svg-icon($unnamed-color-ffbb00, $font-size);
+}
+.icon-block {
+  @include svg-icon($unnamed-color-d51111, $font-size);
+}

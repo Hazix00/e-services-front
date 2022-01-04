@@ -10,3 +10,20 @@
   color: #FFFFFF;
   text-transform: uppercase;
 }
+
+.btn--control-add {
+  border-radius: 15px;
+  border: 2px solid $unnamed-color-00c2d1;
+  padding: 0;
+  width: 37px;
+  height: 39px;
+  mat-icon {
+    font-size: 20px;
+  }
+}
+
+.radio-btn {
+  height: 10px;
+  padding: 0;
+  margin: 3px 2px;
+}
