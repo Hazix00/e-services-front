@@ -1,5 +1,17 @@
 @import '~/src/scss/variables';
 
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.demande-notification {
+  background: transparent linear-gradient(180deg, $unnamed-color-ffffff 0%, #FEEE8C 100%) 0% 0% no-repeat padding-box;
+  border: 1px solid $unnamed-color-9e8f2e;
+  box-shadow: 0px 0px 11px #9E9E9E61;
+  border-radius: 20px;
+}
+
 .dashboard-items-container {
   margin-top: 1.25rem;
 }

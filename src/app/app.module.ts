@@ -38,6 +38,9 @@ import { GroupListComponent } from './components/users/group-list/group-list.com
 import { GroupItemComponent } from './components/users/group-item/group-item.component';
 import { GroupControlComponent } from './components/users/group-control/group-control.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { WorkflowsManagementComponent } from './pages/workflows-management/workflows-management.component';
+import { Ej2DiagramModule } from 'src/modules/ej2-diagram.module';
+import { DiagramTestComponentComponent } from './pages/workflows-management/diagram-test-component/diagram-test-component.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +75,8 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     GroupItemComponent,
     GroupControlComponent,
     UserDetailsComponent,
+    WorkflowsManagementComponent,
+    DiagramTestComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +87,7 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    Ej2DiagramModule
   ],
   providers: [],
   bootstrap: [AppComponent],

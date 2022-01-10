@@ -2,7 +2,6 @@ main {
   //margin-top: 6rem;
 }
 .page-container {
-  height: 100%;
   width: 100%;
   overflow-x: hidden;
   .main-container {
@@ -11,7 +10,6 @@ main {
   aside {
     background: transparent linear-gradient(180deg, #4DFFED 0%, #032E77 100%) 0% 0% no-repeat padding-box;
     width: 100%;
-    height: 150%;
     position: relative;
 
     .login-img {

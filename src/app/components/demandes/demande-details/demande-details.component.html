@@ -1,7 +1,26 @@
 <div class="dashboard-items-container">
+  <div class="demande-notification">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <h3>
+        <mat-icon>done</mat-icon>
+        <!-- <mat-icon>loop</mat-icon>
+        <mat-icon>do_disturb</mat-icon>
+        <mat-icon>pause_circle_outline</mat-icon> -->
+        <span>Validation par la commission</span>
+      </h3>
+      <span>Le 22/12/2021 - 12:45</span>
+    </div>
+    <div class="demande-notification__message" fxLayout="column">
+      <p>Raison de rejet: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo cum veritatis labore id eius unde, possimus iste exercitationem assumenda molestiae nemo, corporis fugiat aperiam odio in dolores mollitia maxime quis?</p>
+      <button class="btn" fxFlexAlign="end" fxLayoutAlign="none center">
+        <mat-icon>download</mat-icon>
+        Télécharger
+      </button>
+    </div>
+  </div>
   <div class="demande-details">
+    <!-- ################  SECTION 1  ################# -->
     <div class="demande-details__infos">
-      <!-- ################  SECTION 1  ################# -->
       <div
         class="demande-details__section-header"
         fxLayout="row"
@@ -127,6 +146,7 @@
         </div>
       </ng-container>
     </div>
+    <!-- ################  END SECTION 1  ############# -->
     <!-- ################  SECTION 2  ################# -->
     <div class="demande-details__documents">
       <div
@@ -188,6 +208,7 @@
         </div>
       </ng-container>
     </div>
+    <!-- ################  END SECTION 2  ############# -->
     <!-- ################  SECTION 3  ################# -->
     <div class="demande-details__payment">
       <div
@@ -244,5 +265,6 @@
         </div>
       </ng-container>
     </div>
+    <!-- ################  END SECTION 3  ############# -->
   </div>
 </div>
