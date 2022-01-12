@@ -1,16 +1,23 @@
-<mat-stepper *ngIf="forms.length > 0" [linear]="isLinear" #stepper>
-  <mat-step *ngFor="let form of forms" [stepControl]="form?.id">
-    <ng-template matStepLabel>{{ form?.title }}</ng-template>
+<mat-stepper
+  *ngIf="forms.length > 0"
+  [linear]="isLinear"
+  [selectedIndex]="1"
+  #stepper
+>
+  <mat-step *ngFor="let form of forms; index as i" [stepControl]="form._id">
+    <ng-template matStepLabel>{{ form?.title }}{{ form._id }}</ng-template>
     <app-json-form-v2
       *ngIf="!!form"
       [loading]="loading"
       [inputs]="form.inputs"
       [form]="form"
-      (onSubmit)="onSubmit($event)"
+      (onSubmit)="onSubmit(form._id, $event, stepper)"
+      [showBackBtn]="i > 0"
+      [showSaveBtn]="true"
     ></app-json-form-v2>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <!-- <div>
+      <button *ngIf="i > 0" (click)="goBack(stepper)" mat-button>Back</button>
+      <button mat-button (click)="goNext(stepper)">Next</button>
+    </div> -->
   </mat-step>
 </mat-stepper>

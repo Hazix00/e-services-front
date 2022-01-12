@@ -22,6 +22,8 @@ export class JsonFormV2Component implements OnInit {
   //! Inputs
   @Input() form!: any;
   @Input() loading: boolean = true;
+  @Input() showBackBtn: boolean = false;
+  @Input() showSaveBtn: boolean = false;
   @Input() inputs: any[] = [];
   @Input() showBtns = true;
   @Input() defaultValues: any[] = [];
@@ -49,9 +51,12 @@ export class JsonFormV2Component implements OnInit {
 
   createForm(inputs: FormInput[]): void {
     if (!inputs) return;
+    // console.log(inputs);
     inputs.forEach((input, index) => {
       const validation = input?.validation;
       const validators: any[] = [];
+
+      // console.log(input);
 
       Object.entries(validation || []).forEach(([key, value]) => {
         switch (key) {
@@ -83,18 +88,22 @@ export class JsonFormV2Component implements OnInit {
         input._id,
         this.formBuilder.control(input?.value, validators)
       );
+
+      if (input?.userValues) {
+        console.log(input.userValues);
+        this.formGroup.controls[input._id].setValue(input?.userValues?.value);
+        if (!input?.userValues?.canEdit) {
+          this.formGroup.controls[input._id].disable();
+        }
+      }
       // console.log('this.defaultValues', this.defaultValues);
     });
   }
 
   submit() {
     if (this.formGroup.valid) {
-      // console.log('submit', this.formGroup.value);
       this.onSubmit.emit(this.formGroup.value);
-      // console.log('submit', this.formGroup.value);
-      // console.log(this.formGroup.value, 'hello');
     } else {
-      // console.log(this.formGroup.value);
       Object.values(this.formGroup.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();

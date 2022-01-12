@@ -25,6 +25,10 @@ export class UserFoldersService {
     );
   }
 
+  getFolderById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
   createFolder(createFolderDto: CreateFolderDto): Observable<any> {
     return this.http.post(this.apiUrl, createFolderDto);
   }

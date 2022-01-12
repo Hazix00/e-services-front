@@ -101,19 +101,34 @@
         fxLayout="row"
         fxLayoutAlign="space-between center"
         class="action-buttons"
-        *ngIf="!showBtns"
+        *ngIf="showBtns"
       >
         <div class="control">
-          <button type="button" class="btn btn-invert" (click)="goPrev()">
+          <button
+            *ngIf="showBackBtn"
+            type="button"
+            class="btn btn-invert"
+            (click)="goPrev()"
+          >
             Retour
           </button>
         </div>
-        <div *ngIf="!showNext" class="control">
-          <button class="btn" type="submit">Submit</button>
+        <div class="control">
+          <button
+            *ngIf="showSaveBtn"
+            type="button"
+            class="btn btn-invert"
+            (click)="goPrev()"
+          >
+            Save progression
+          </button>
         </div>
-        <div *ngIf="showNext" class="control">
+        <div class="control">
+          <button class="btn" type="submit">Suivant</button>
+        </div>
+        <!-- <div *ngIf="showNext" class="control">
           <button class="btn" type="button" (click)="goNext()">Suivant</button>
-        </div>
+        </div> -->
       </div>
     </form>
   </div>

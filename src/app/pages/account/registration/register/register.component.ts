@@ -39,6 +39,7 @@ export interface FormInput {
   disabled?: boolean;
   subcategories: any[];
   children: any[];
+  userValues?: any;
 }
 
 export enum ActionType {
