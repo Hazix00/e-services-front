@@ -1,3 +1,18 @@
+@import '~src/scss/mixins';
+
+h4 {
+  padding: 0;
+  margin: 0;
+}
 .btn {
   padding: 12px;
+}
+
+$icon-size: 18px;
+.icon-Icon_ionic-ios-folder-open {
+  @include svg-icon(#B0B0B0, $icon-size);
+}
+
+.workflow {
+  height: 40px;
 }

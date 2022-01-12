@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { AddDemandeComponent } from 'src/app/components/demades/add-demande/add-demande.component';
 import { UserStoreService } from 'src/app/services/user-store/user-store.service';
 import { UserWorkflowsService } from 'src/app/services/userWorkflows/user-workflows.service';
 import { AppState } from 'src/app/store/app.state';
@@ -18,7 +20,10 @@ export class DemandesCategoriesComponent implements OnInit {
   user?: any;
   workflows: any[] = [];
 
-  constructor(private readonly store: Store<AppState>) {
+  constructor(
+    private readonly store: Store<AppState>,
+    public dialog: MatDialog
+    ) {
     this.store.select(selectUser).subscribe((user) => {
       this.user = user;
       if (user) {
@@ -31,4 +36,15 @@ export class DemandesCategoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  addNewDemande(): void {
+    const dialogRef = this.dialog.open(AddDemandeComponent, {
+      width: '500px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
 }

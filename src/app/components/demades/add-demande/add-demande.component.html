@@ -1,21 +1,39 @@
 <div class="modal-container">
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>First name</mat-label>
-      <input matInput>
-    </mat-form-field></td>
-    <td><mat-form-field appearance="fill">
-      <mat-label>Toppings</mat-label>
-      <mat-select >
-        <mat-select-trigger>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field appearance="fill">
+      <mat-label>Recherche</mat-label>
+      <input matInput />
+    </mat-form-field>
 
-        </mat-select-trigger>
-        <mat-option>Option 1</mat-option>
-        <mat-option>Option 2</mat-option>
+    <mat-form-field appearance="fill">
+      <mat-label>Famille</mat-label>
+      <mat-select>
+        <mat-select-trigger> </mat-select-trigger>
+        <mat-option value="Option 1">
+          Option 1
+        </mat-option>
+        <mat-option value="Option 2">
+          Option 2
+        </mat-option>
       </mat-select>
     </mat-form-field>
-    </td>
-  </tr></table>
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+    <div class="workflows">
+      <div *ngFor="let item of [1,2,3,4,5]" class="workflow" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <div fxLayout="row">
+          <span class="icon icon-Icon_ionic-ios-folder-open"></span>
+          <span>D46</span>
+        </div>
+        <span class="separator"></span>
+        <div>
+          <h4>N. D. pharmaceutique usage humain Cat. 1</h4>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
   <div>
     <button class="btn">Suivant</button>
   </div>
