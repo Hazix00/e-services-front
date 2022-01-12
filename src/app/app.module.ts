@@ -59,6 +59,8 @@ import { selectuserInfos } from './store/user/user.selectors';
 import { fetchWorkflows } from './store/workflows/workflows.actions';
 import { foldersReducer } from './store/folders/folders.reducer';
 import { FoldersEffects } from './store/folders/folders.effects';
+import { ChatBoxComponent } from './components/chat/chat-box/chat-box.component';
+import { ChatButtonComponent } from './components/chat/chat-button/chat-button.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,8 @@ import { FoldersEffects } from './store/folders/folders.effects';
     UserDetailsComponent,
     StandbyComponent,
     JsonFormV2Component,
+    ChatBoxComponent,
+    ChatButtonComponent,
   ],
   imports: [
     BrowserModule,

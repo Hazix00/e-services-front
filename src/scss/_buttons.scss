@@ -9,16 +9,21 @@
   letter-spacing: 2.18px;
   color: #FFFFFF;
   text-transform: uppercase;
-}
 
-.btn--control-add {
-  border-radius: 15px;
-  border: 2px solid $unnamed-color-00c2d1;
-  padding: 0;
-  width: 37px;
-  height: 39px;
-  mat-icon {
-    font-size: 20px;
+  &-invert {
+    background: #fff;
+    color: #0E2447;
+  }
+
+  &--control-add {
+    border-radius: 15px;
+    border: 2px solid $unnamed-color-00c2d1;
+    padding: 0;
+    width: 37px;
+    height: 39px;
+    mat-icon {
+      font-size: 20px;
+    }
   }
 }
 
