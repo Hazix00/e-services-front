@@ -8,6 +8,8 @@ import { selectuserInfos } from 'src/app/store/user/user.selectors';
 import { forkJoin } from 'rxjs';
 import { fetchFolders } from 'src/app/store/folders/folders.actions';
 import { selectAllFolders } from 'src/app/store/folders/folders.selectors';
+import { AddDemandeComponent } from 'src/app/components/demades/add-demande/add-demande.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-demandes',
@@ -21,7 +23,8 @@ export class DemandesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private readonly store: Store<AppState>
+    private readonly store: Store<AppState>,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +38,18 @@ export class DemandesComponent implements OnInit {
           fetchFolders({ userId: user.id, worflowId: this.workflowId })
         );
       }
+    });
+  }
+
+  addNewDemande(): void {
+    const dialogRef = this.dialog.open(AddDemandeComponent, {
+      width: '500px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
     });
   }
 }
