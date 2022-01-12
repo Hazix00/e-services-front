@@ -1,0 +1,10 @@
+<button class="btn btn-chat-icon"
+  matBadge=2
+  matBadgePosition="before"
+  matBadgeColor="warn"
+  (click)="showChat = !showChat">
+  <mat-icon >chat</mat-icon>
+  <app-chat-box class="chat-container {{ showChat ? 'chat-container--show' : '' }}"
+    [showChat]="showChat"
+    (toggleShowChat)="toggleShowChat()"></app-chat-box>
+</button>

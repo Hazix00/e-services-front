@@ -1,0 +1,38 @@
+@import '~/src/scss/variables';
+
+.btn-chat-icon {
+  padding: 0;
+  margin: 0;
+  border: 3px solid $unnamed-color-ffbb00;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  .mat-badge-content {
+    position: absolute;
+    top: -9px;
+    left: -14px;
+    border: 2px solid #fff;
+    background-color: #F30000;
+  }
+  mat-icon {
+    position: relative;
+    top: 3px;
+  }
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  .chat-container {
+    visibility: hidden;
+    height: 466px;
+    width: 424px;
+    background-color: aqua;
+    position: absolute;
+    bottom: 55px;
+    right: -2px;
+
+    &--show {
+      visibility:visible !important;
+    }
+  }
+}
