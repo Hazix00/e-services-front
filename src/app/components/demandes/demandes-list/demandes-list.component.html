@@ -1,3 +1,8 @@
 <div class="list-container" fxLayout="column" fxLayoutGap="18px">
-  <app-demandes-item *ngFor="let item of dummy_list" [status]="item"></app-demandes-item>
+  <app-demandes-item
+    *ngFor="let folder of folders$ | async"
+    [status]="folder.status"
+    [id]="folder._id"
+    [workflowId]="folder.workflowId"
+  ></app-demandes-item>
 </div>

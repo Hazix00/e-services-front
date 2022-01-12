@@ -1,0 +1,5 @@
+<div [ngStyle]="{ padding: '30px' }">
+  <p *ngIf="!loading">{{ messge }}</p>
+  <p *ngIf="loading">Loding...</p>
+  <a [routerLink]="['/account/registration/login']"> Login </a>
+</div>

@@ -1,9 +1,13 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { RegisterService } from 'src/app/services/auth/register.service';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { FormService } from 'src/app/services/form/form.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { AppState } from 'src/app/store/app.state';
+import { fetchInitialWorkflow } from 'src/app/store/auth/register/register.actions';
 export interface Form {
   _id: string;
   title?: string;
@@ -61,11 +65,17 @@ export class RegisterComponent implements OnInit {
     private readonly formService: FormService,
     private readonly userService: UserService,
     private readonly categoriesService: CategoriesService,
-    private readonly registerService: RegisterService
+    private readonly registerService: RegisterService,
+    private readonly router: Router,
+    private readonly store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
+    this.store.dispatch(fetchInitialWorkflow());
     const clientID = localStorage.getItem('clientID');
+    // if (localStorage.getItem('userStandby') === 'true') {
+    //   this.router.navigate(['/account/registration/standby']);
+    // }
     if (clientID) {
       this.clientID = clientID;
       this.registerService.getCurrentRegisterForm(clientID).subscribe({
@@ -79,7 +89,6 @@ export class RegisterComponent implements OnInit {
               }
               this.workflow = form?.workflow;
               this.form = form;
-              console.log(form);
               if (form?.inputs) {
                 this.defaultValues = form?.inputs?.map((input: any) => {
                   return {
@@ -213,6 +222,7 @@ export class RegisterComponent implements OnInit {
       data.inputs = [...finalArray];
       // console.log(data);
     }
+
     this.registerService.submitregisterForm(data).subscribe({
       next: (response) => {
         // console.log(response);
@@ -260,7 +270,29 @@ export class RegisterComponent implements OnInit {
           }
         }
       },
-      error: (error: any) => {},
+      error: (error: any) => {
+        console.log(error);
+        if (error.status === 404) {
+          // localStorage.setItem('userStandby', 'true');
+          if (this.clientID) {
+            this.userService.getUser(this.clientID).subscribe({
+              next: (response) => {
+                // console.log(response);
+                if (response && !response?.isActive) {
+                  localStorage.setItem('userStandby', 'true');
+                  this.router.navigate(['/account/registration/standby']);
+                }
+
+                if (response && response?.isActive) {
+                  this.router.navigate(['/account/registration/login']);
+                }
+              },
+              error: (error: any) => {},
+              complete: () => {},
+            });
+          }
+        }
+      },
       complete: () => {},
     });
   }

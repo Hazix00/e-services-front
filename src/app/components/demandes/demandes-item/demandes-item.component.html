@@ -1,17 +1,26 @@
-<div class="demande item-container {{clientDetailsOpen ? 'details-open': ''}}" fxLayout="row">
-  <div class="demande__infos" fxFlex="100" fxLayout="row" fxLayoutAlign="none center" (click)="clientDetailsOpen = !clientDetailsOpen">
-    <div class="id {{statusClass}}" fxFlex="9.1796875">
+<div
+  class="demande item-container {{ clientDetailsOpen ? 'details-open' : '' }}"
+  fxLayout="row"
+>
+  <div
+    class="demande__infos"
+    fxFlex="100"
+    fxLayout="row"
+    fxLayoutAlign="none center"
+    (click)="clientDetailsOpen = !clientDetailsOpen"
+  >
+    <div class="id {{ statusClass }}" fxFlex="9.1796875">
       <span class="icon-Icon_ionic-ios-folder-open icon" alt=""></span>
       <span>BC456</span>
     </div>
     <span class="separator"></span>
-    <div class="status {{statusClass}}" fxFlex="11.71875">
-      <mat-icon>{{statusClass}}</mat-icon>
-      <span>{{status}}</span>
+    <div class="status {{ statusClass }}" fxFlex="11.71875">
+      <mat-icon>{{ statusClass }}</mat-icon>
+      <span>{{ status }}</span>
     </div>
     <span class="separator"></span>
     <div class="client" fxFlex="20.01953125">
-      <img src="../../../../assets/img/img-200x200.png" alt="">
+      <img src="../../../../assets/img/img-200x200.png" alt="" />
       <span>Client</span>
     </div>
     <span class="separator"></span>
@@ -35,12 +44,15 @@
         <mat-progress-spinner
           [mode]="'determinate'"
           [value]="67"
-          [diameter]="33">
+          [diameter]="33"
+        >
         </mat-progress-spinner>
-        <div style="position: relative; top: -22px; left: 28px; height: 0;">67%</div>
+        <div style="position: relative; top: -22px; left: 28px; height: 0">
+          67%
+        </div>
       </div>
     </div>
-    <button class="details-icon-btn" mat-icon-button>
+    <button class="details-icon-btn" mat-icon-button (click)="goToDetailPage()">
       <mat-icon>arrow_forward_ios</mat-icon>
     </button>
   </div>
@@ -48,14 +60,19 @@
   <button class="" fxFlex=".1" type="menu" mat-icon-button>
     <mat-icon>more_vert</mat-icon>
   </button>
-
 </div>
 
-<div *ngIf="clientDetailsOpen" class="client-details" fxLayoutAlign="space-between center">
+<div
+  *ngIf="clientDetailsOpen"
+  class="client-details"
+  fxLayoutAlign="space-between center"
+>
   <div fxLayoutAlign="none center">
-    <mat-icon class="{{statusClass}}">{{statusClass}}</mat-icon>
-    <span class="{{statusClass}}">Validation de la Recevabilité: </span>
-    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse iste </span>
+    <mat-icon class="{{ statusClass }}">{{ statusClass }}</mat-icon>
+    <span class="{{ statusClass }}">Validation de la Recevabilité: </span>
+    <span
+      >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse iste
+    </span>
   </div>
   <button class="btn" fxLayoutAlign="none center">
     <mat-icon>download</mat-icon>

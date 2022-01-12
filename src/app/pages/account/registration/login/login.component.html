@@ -2,27 +2,46 @@
   <h2 class="title">Se connecter en tant que</h2>
 
   <div class="form-container">
-    <form>
+    <!-- <form (ngSubmit)="loginUser()">
       <div class="control">
         <select>
           <option value="Administrateur">Administrateur</option>
           <option value="DMP">DMP</option>
-          <option value="Client">Client</option>
+          <option selected value="Client">Client</option>
         </select>
       </div>
-      <hr noshade>
+      <hr noshade />
       <div class="control control-input">
         <mat-icon>person</mat-icon>
-        <input type="text" placeholder="Login">
+        <input
+          name="email"
+          [(ngModel)]="email"
+          type="text"
+          placeholder="Login"
+        />
       </div>
       <div class="control control-input">
         <mat-icon>key</mat-icon>
-        <input type="password" placeholder="Mot de passe">
+        <input
+          name="password"
+          [(ngModel)]="password"
+          type="password"
+          placeholder="Mot de passe"
+        />
       </div>
       <div class="control">
-        <button class="btn" type="button">Se connecter</button>
+        <button class="btn" type="submit">Se connecter</button>
       </div>
-    </form>
+    </form> -->
+    <div>
+      <app-json-form-v2
+        *ngIf="!!form"
+        [inputs]="inputs"
+        [form]="form"
+        [loading]="loading"
+        (onSubmit)="onSubmit($event)"
+      ></app-json-form-v2>
+    </div>
   </div>
 
   <div class="register-forgotten-password">
@@ -30,4 +49,3 @@
     <a>Mot de passe oublié</a>
   </div>
 </div>
-

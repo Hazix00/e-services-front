@@ -38,6 +38,27 @@ import { GroupListComponent } from './components/users/group-list/group-list.com
 import { GroupItemComponent } from './components/users/group-item/group-item.component';
 import { GroupControlComponent } from './components/users/group-control/group-control.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { StandbyComponent } from './pages/account/standby/standby/standby.component';
+import { Store, StoreModule } from '@ngrx/store';
+import { workflowsReducer } from './store/workflows/workflows.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { WorkflowsEffects } from './store/workflows/workflows.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { registerReducer } from './store/auth/register/register.reducer';
+import { RegisterEffects } from './store/auth/register/register.effects';
+import { loginReducer } from './store/auth/login/login.reducer';
+import { LoginEffects } from './store/auth/login/login.effects';
+import { JsonFormV2Component } from './components/json-form-v2/json-form-v2.component';
+import { authReducer } from './store/auth/auth.reducer';
+import { AuthEffects } from './store/auth/auth.effects';
+import { AppState } from './store/app.state';
+import { authenticateUser } from './store/auth/auth.actions';
+import { userReducer } from './store/user/user.reducer';
+import { selectuserInfos } from './store/user/user.selectors';
+import { fetchWorkflows } from './store/workflows/workflows.actions';
+import { foldersReducer } from './store/folders/folders.reducer';
+import { FoldersEffects } from './store/folders/folders.effects';
 
 @NgModule({
   declarations: [
@@ -72,6 +93,8 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     GroupItemComponent,
     GroupControlComponent,
     UserDetailsComponent,
+    StandbyComponent,
+    JsonFormV2Component,
   ],
   imports: [
     BrowserModule,
@@ -82,8 +105,38 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
+    StoreModule.forRoot({
+      workflows: workflowsReducer,
+      register: registerReducer,
+      login: loginReducer,
+      auth: authReducer,
+      user: userReducer,
+      folders: foldersReducer,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: !environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+    EffectsModule.forRoot([
+      WorkflowsEffects,
+      RegisterEffects,
+      LoginEffects,
+      AuthEffects,
+      FoldersEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private readonly store: Store<AppState>) {
+    this.store.dispatch(authenticateUser());
+    this.store.select(selectuserInfos).subscribe((user) => {
+      if (user?.id) {
+        this.store.dispatch(fetchWorkflows({ userId: user.id }));
+      }
+    });
+  }
+}

@@ -31,6 +31,19 @@
             placeholder="{{ input?.label }}"
           />
         </div>
+        <div
+          *ngIf="['file'].includes(input.type)"
+          class="control control-input"
+        >
+          <mat-icon>{{ getIcon(input.type) }}</mat-icon>
+          <input
+            name="{{ input._id }}"
+            formControlName="{{ input._id }}"
+            type="{{ input.type }}"
+            placeholder="{{ input?.label }}"
+            (change)="onFileSelected($event)"
+          />
+        </div>
 
         <div *ngIf="form.type === 'category'" class="activities__section">
           <div class="activities__title-container">
@@ -143,7 +156,7 @@
           </button>
         </div>
         <div *ngIf="!showNext" class="control">
-          <button class="btn" type="submit">Suivant</button>
+          <button class="btn" type="submit">Submit</button>
         </div>
         <div *ngIf="showNext" class="control">
           <button class="btn" type="button" (click)="goNext()">Suivant</button>

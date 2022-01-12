@@ -1,7 +1,60 @@
-<div *ngIf="layoutView === 'grid'" class="list-container" fxLayout="row wrap" fxLayoutAlign="space-between start">
-  <app-demande-category-item  fxFlex="31" *ngFor="let item of [1,2,3,4,5,6]"></app-demande-category-item>
+<div
+  *ngIf="layoutView === 'grid'"
+  class="list-container"
+  fxLayout="row wrap"
+  fxLayoutAlign="space-between start"
+>
+  <div>
+    <div *ngFor="let workflow of workflows | async">
+      <p>{{ workflow.category }}</p>
+      <!-- <app-demande-category-item fxFlex="31"></app-demande-category-item> -->
+    </div>
+  </div>
 </div>
 
-<div *ngIf="layoutView === 'list'" class="list-container list-container--liste-view  list-container__list">
-  <app-demande-category-item  *ngFor="let item of [1,2,3,4,5,6]"></app-demande-category-item>
+<!-- <p>{{ workflows[0].category }}</p> -->
+
+<div
+  *ngIf="layoutView === 'list'"
+  class="list-container list-container--liste-view list-container__list"
+>
+  <app-demande-category-item
+    *ngFor="let item of workflows | async"
+  ></app-demande-category-item>
 </div>
+
+<div>
+  <div *ngFor="let workflow of workflows | async">
+    <div
+      [routerLink]="[
+        '/dashboard/demandes-categories',
+        workflow._id,
+        'demandes'
+      ]"
+    >
+      <app-demande-category-item
+        [id]="workflow._id"
+        title="{{ workflow.title }}"
+        fxFlex="31"
+      ></app-demande-category-item>
+    </div>
+  </div>
+</div>
+
+<h4>Creer une demander</h4>
+<form (ngSubmit)="createFolder()">
+  <mat-form-field appearance="fill">
+    <mat-label>Selectionner un workflow</mat-label>
+    <mat-select [(value)]="selectedWorkflow">
+      <mat-option
+        *ngFor="let workflow of workflows | async"
+        [value]="workflow?._id"
+      >
+        {{ workflow?.title }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">
+    Creer une demande
+  </button>
+</form>

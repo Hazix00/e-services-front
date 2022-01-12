@@ -6,15 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private readonly apiUrl = 'http://localhost:3000/v1/auth';
+  private readonly apiUrl = 'http://localhost:3000/v1/users';
 
   constructor(private readonly http: HttpClient) {}
 
-  getUser(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
-  }
-
-  registerUser(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+  getUser(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 }

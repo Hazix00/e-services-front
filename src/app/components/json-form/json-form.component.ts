@@ -4,6 +4,7 @@ import {
   Form,
   FormInput,
 } from 'src/app/pages/account/registration/register/register.component';
+import { FilesService } from 'src/app/services/files/files.service';
 
 const insert = (arr: any[], index: number, newItem: any) => [
   // part of the array before the specified index
@@ -34,8 +35,13 @@ export class JsonFormComponent implements OnInit {
   //! STATE
   formGroup: FormGroup = this.formBuilder.group({});
   showNext: Boolean = false;
+  isUploading: Boolean = false;
+  files: any = {};
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly filesService: FilesService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -131,13 +137,18 @@ export class JsonFormComponent implements OnInit {
       // console.log('this.defaultValues', this.defaultValues);
 
       if (this.defaultValues.length > 0 && this.form.type !== 'category') {
-        this.showNext = this.defaultValues.length > 0;
+        console.log('this.defaultValues', this.defaultValues);
+        this.showNext = true;
         const defaultValue = this.defaultValues.find(
           (value) => value?._id === input._id
         );
 
-        if (defaultValue) {
+        if (defaultValue && input.type !== 'file') {
           this.formGroup.controls[input._id].setValue(defaultValue.value);
+        }
+
+        if (input.type === 'file') {
+          this.files[input._id] = defaultValue.value;
         }
         if (defaultValue && !defaultValue?.canEdit) {
           this.formGroup.controls[input._id].disable();
@@ -155,10 +166,16 @@ export class JsonFormComponent implements OnInit {
   }
 
   submit() {
+    if (this.isUploading) return alert('Please wait for the upload to finish');
     if (this.formGroup.valid) {
       // console.log('submit', this.formGroup.value);
+      Object.entries(this.formGroup.value).forEach(([key, value]) => {
+        if (this.files[key]) {
+          this.formGroup.value[key] = this.files[key];
+        }
+      });
       this.onSubmit.emit(this.formGroup.value);
-
+      // console.log('submit', this.formGroup.value);
       // console.log(this.formGroup.value, 'hello');
     } else {
       // console.log(this.formGroup.value);
@@ -172,6 +189,11 @@ export class JsonFormComponent implements OnInit {
   }
 
   goNext() {
+    Object.entries(this.formGroup.value).forEach(([key, value]) => {
+      if (this.files[key]) {
+        this.formGroup.value[key] = this.files[key];
+      }
+    });
     this.onSubmit.emit(this.formGroup.value);
   }
 
@@ -204,5 +226,27 @@ export class JsonFormComponent implements OnInit {
         event.target.checked
       );
     }
+  }
+
+  onFileSelected(event: any) {
+    this.isUploading = true;
+    this.filesService.uploadImage(event.target.files[0]).subscribe({
+      next: (response) => {
+        console.log(event.target.name);
+        if (response?.data) {
+          // this.formGroup.controls[event.target.name].setValue(
+          //   event.target.files[0]
+          // );
+          this.files[event.target.name] = response.data;
+          this.isUploading = false;
+        }
+      },
+      error: (err) => {
+        this.isUploading = false;
+      },
+      complete: () => {
+        this.isUploading = false;
+      },
+    });
   }
 }

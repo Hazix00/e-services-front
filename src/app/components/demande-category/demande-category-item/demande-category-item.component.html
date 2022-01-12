@@ -1,12 +1,33 @@
-<div *ngIf="layoutView === 'grid'" class="category item-container" fxLayout="column">
-  <div class="category__top-row" fxFlex="70" fxLayout="row" fxLayoutAlign="center center">
-    <div class="category__dossier" fxFlex="25" fxLayout="column" fxLayoutAlign="center center">
-      <img class="category__dossier__icon" src="../../../../assets/img/Icon ionic-ios-folder-open.svg" alt="">
+<div
+  *ngIf="layoutView === 'grid' && !!title"
+  class="category item-container"
+  fxLayout="column"
+>
+  <div
+    class="category__top-row"
+    fxFlex="70"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
+    <div
+      class="category__dossier"
+      fxFlex="25"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <img
+        class="category__dossier__icon"
+        src="../../../../assets/img/Icon ionic-ios-folder-open.svg"
+        alt=""
+      />
       <span class="category__dossier__id">D01</span>
     </div>
     <div class="category__text">
-      <h4 class="category__title">Titre du dossier</h4>
-      <small class="category__description">Lorem ipsum dolor sit amet consectetu adipisicing elit. Dolorem, veniam animi sapiente quasi incidunt quod sunt</small>
+      <h4 class="category__title">{{ title }}</h4>
+      <small class="category__description"
+        >Lorem ipsum dolor sit amet consectetu adipisicing elit. Dolorem, veniam
+        animi sapiente quasi incidunt quod sunt</small
+      >
     </div>
   </div>
   <div fxFlex fxLayout="row" fxLayoutAlign="start center">
@@ -41,9 +62,22 @@
   </div>
 </div>
 
-<div *ngIf="layoutView === 'list'" class="category--list-view" fxLayout="row" fxLayoutAlign="none center">
-  <div class="category--list-view__dossier" fxFlex="8" fxLayoutAlign="space-around center">
-    <img class="category--list-view__dossier__icon" src="../../../../assets/img/Icon ionic-ios-folder-open.svg" alt="">
+<div
+  *ngIf="layoutView === 'list'"
+  class="category--list-view"
+  fxLayout="row"
+  fxLayoutAlign="none center"
+>
+  <div
+    class="category--list-view__dossier"
+    fxFlex="8"
+    fxLayoutAlign="space-around center"
+  >
+    <img
+      class="category--list-view__dossier__icon"
+      src="../../../../assets/img/Icon ionic-ios-folder-open.svg"
+      alt=""
+    />
     <span class="category--list-view__dossier__id">D01</span>
   </div>
   <span class="separator"></span>
@@ -71,7 +105,10 @@
   </div>
   <span class="separator"></span>
   <div fxFlex="75">
-    <small class="category__description">Lorem ipsum dolor sit amet consectetu adipisicing elit. Dolorem, veniam animi sapiente quasi incidunt quod sunt</small>
+    <small class="category__description"
+      >Lorem ipsum dolor sit amet consectetu adipisicing elit. Dolorem, veniam
+      animi sapiente quasi incidunt quod sunt</small
+    >
   </div>
   <span class="separator"></span>
   <div fxFlex="10" fxLayout="column">
@@ -89,4 +126,3 @@
   </div>
 </div>
 <mat-divider></mat-divider>
-
