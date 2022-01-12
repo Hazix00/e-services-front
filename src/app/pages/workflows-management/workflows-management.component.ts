@@ -30,16 +30,13 @@ export interface EmployeeInfo {
 @Component({
   selector: 'app-workflows-management',
   templateUrl: './workflows-management.component.html',
-  // styleUrls: ['./workflows-management.component.scss']
+  styleUrls: ['./workflows-management.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class WorkflowsManagementComponent implements OnInit {
 
   @ViewChild('diagram')
   public diagram!: DiagramComponent;
-  // public diagramConstraints: DiagramConstraints =
-  //       DiagramConstraints.Default | DiagramConstraints.LineRouting
-
 
   public snapSettings: SnapSettingsModel = {
     constraints: SnapConstraints.None
@@ -55,7 +52,10 @@ export class WorkflowsManagementComponent implements OnInit {
     strokeColor: 'white'
   }
   public startNodeConstraints = {
-    constraints: NodeConstraints.Default & ~NodeConstraints.InConnect & ~NodeConstraints.Select
+    constraints: NodeConstraints.Default
+        // & ~NodeConstraints.InConnect
+        // & ~NodeConstraints.Select
+        // & ~NodeConstraints.Resize
   }
 
   //process shape
@@ -102,69 +102,78 @@ export class WorkflowsManagementComponent implements OnInit {
 
   directions = ['top', 'right', 'bottom', 'left']
   selectionChange(args: ISelectionChangeEventArgs) {
-    //if(args.type === 'Removal') return
-    if (args.state === 'Changing'
-        && (args.newValue[0] as any)?.propName === "nodes") {
-
-      const selectedNode = args.newValue[0] as NodeModel
+    // If the user selected a node
+    if (args.state === 'Changing') {
       const theObject = args.newValue[0] as any
-      let connectorsInDirections: { [key: string]: Boolean} = {
-        top: false,
-        right: false,
-        bottom: false,
-        left: false
+
+      if (theObject?.propName === "nodes") { // a node is selected
+
+        const selectedNode = args.newValue[0] as NodeModel
+        if(selectedNode.shape?.type === 'HTML') return;
+
+        // clear action connectors
+        this.removeActionNode()
+        this.removeActionConnectors()
+        let connectorsInDirections: { [key: string]: Boolean} = {
+          top: false,
+          right: false,
+          bottom: false,
+          left: false
+        }
+
+        // get directions where connectors are connected in the selected Node
+        const shapeType = selectedNode?.shape as FlowShape
+        if(shapeType.shape === 'Decision' || shapeType.shape === 'Process') {
+          theObject.inEdges.forEach( (connectorId: string) => {
+            const connector = this.diagram.getConnectorObject(connectorId)
+            const directions = this.getPointDirectionItIsIn(selectedNode, connector.targetPoint!)
+            for(const direction in directions) {
+              if(directions[direction])
+                connectorsInDirections[direction] = true
+            }
+          })
+          // get directions where connectors are connected out of the selected Node
+          theObject.outEdges.forEach( (connectorId: string) => {
+            const connector = this.diagram.getConnectorObject(connectorId)
+            const directions = this.getPointDirectionItIsIn(selectedNode, connector.sourcePoint!)
+            for(const direction in directions) {
+              if(directions[direction])
+              connectorsInDirections[direction] = true
+            }
+          })
+          for(const direction in connectorsInDirections) {
+            if(connectorsInDirections[direction] === false)
+              this.AddConnectorInDirection(selectedNode, direction)
+          }
+        }
+        else {
+          if(theObject.outEdges.length === 0) {
+            this.AddConnectorInDirection(selectedNode, 'bottom')
+          }
+        }
       }
-      // get directions where connectors are connected in the selected Node
-      theObject.inEdges.forEach( (connectorId: string) => {
-        const connector = this.diagram.getConnectorObject(connectorId)
-        const directions = this.getPointDirectionItIsIn(selectedNode, connector.targetPoint!)
-        for(const direction in directions) {
-          if(directions[direction])
-          connectorsInDirections[direction] = true
-        }
-        console.log('directions In', directions)
-      })
-      // get directions where connectors are connected out of the selected Node
-      theObject.outEdges.forEach( (connectorId: string) => {
-        const connector = this.diagram.getConnectorObject(connectorId)
-        const directions = this.getPointDirectionItIsIn(selectedNode, connector.sourcePoint!)
-        for(const direction in directions) {
-          if(directions[direction])
-          connectorsInDirections[direction] = true
-        }
-        console.log('directions Out', directions)
-      })
+      if (theObject?.propName === "connectors" && theObject?.id.includes('actionConnector-') ) { // an action connector is selected
+        const selectedConnector = theObject as ConnectorModel
+        console.log('Action connector ', selectedConnector.id, ' is selected')
 
-      console.log(connectorsInDirections)
-
-
-      const shapeType = selectedNode?.shape as FlowShape
-      if(shapeType.shape === 'Decision') {
-
-        // const node: NodeModel = {
-        //   // Position of the node
-        //   offsetX: selectedNode.offsetX,
-        //   offsetY: selectedNode.offsetY! + 200,
-        //   shape: this.inputShape,
-        //   id: 'Node'
-        // }
-        for(const direction in connectorsInDirections) {
-          if(connectorsInDirections[direction] === false)
-            this.AddConnectorInDirection(selectedNode, direction)
+        let point: PointModel
+        const node: NodeModel = {
+          id: 'actionNode',
+          offsetX: selectedConnector.targetPoint?.x! + 100,
+          offsetY: selectedConnector.targetPoint?.y! + 100,
+          shape: this.inputShape
         }
 
+        this.diagram.addNode(node)
       }
-      // else {
-      //   //remove temporary node and connectors
-      //   this.removeActionNode()
-      //   this.removeActionConnectors()
-      // }
     }
+    // clear action nodes if nothing is selected
     if(!args.newValue[0] && args.state === 'Changed') {
       this.removeActionNode()
       this.removeActionConnectors()
     }
   }
+
 
   getPointDirectionItIsIn(selectedNode: NodeModel, point: PointModel) {
     let connectorsInDirections: { [key: string]: Boolean} = {
@@ -188,7 +197,8 @@ export class WorkflowsManagementComponent implements OnInit {
     return connectorsInDirections
   }
 
-  AddConnectorInDirection(selectedNode: NodeModel, direction: string, offset: number = 200) {
+  // Draw action connector in the specified direction from seleted node
+  AddConnectorInDirection(selectedNode: NodeModel, direction: string, offset: number = 100) {
 
     const targetPoint: PointModel = {
       x: selectedNode.offsetX,
@@ -207,17 +217,32 @@ export class WorkflowsManagementComponent implements OnInit {
       case 'left':
         targetPoint.x! -= offset
     }
+    const connectorColor = "#bcbcbc"
     const connector: ConnectorModel = {
       id: 'actionConnector-' + direction,
       sourceID: selectedNode.id,
       type: 'Orthogonal',
       targetPoint,
+      style: {
+        strokeColor: connectorColor,
+        fill: connectorColor,
+        strokeWidth: 8
+      },
+      targetDecorator: {
+        style: {
+          fill: connectorColor,
+          strokeColor: connectorColor,
+          strokeWidth: 7
+        },
+        height: 5,
+        width: 2
+      }
     }
     this.diagram.addConnector(connector)
   }
 
   removeActionNode() {
-    const node = this.diagram.getNodeObject('Node')
+    const node = this.diagram.getNodeObject('actionNode')
     this.diagram.remove(node)
   }
   removeActionConnectors() {
@@ -236,34 +261,34 @@ export class WorkflowsManagementComponent implements OnInit {
     return obj
   }
 
-  getConnectorDefaults(obj: ConnectorModel): ConnectorModel {
-
-    // Set Source Padding value
-    obj.sourcePadding = 20
-    // Set Target Padding value
-    obj.targetPadding = 20
-
-    // obj.connectionPadding = 20
-    // obj.hitPadding = 20
+  // The defauls connector styles
+  getDefaultConnector(): ConnectorModel {
     const connectorColor = '#1B478E'
-    obj.style = {
-      strokeColor: connectorColor,
-      fill: connectorColor,
-      strokeWidth: 8,
-    }
-    obj.targetDecorator = {
-      style: {
-        fill: connectorColor,
-        strokeColor: connectorColor,
-        strokeWidth: 7
-      },
-      height: 5,
-      width: 2
-    }
+    const obj: ConnectorModel = {
+      type: "Orthogonal",
+      sourcePadding: 20,
+      // Set Target Padding value
+      targetPadding: 20,
 
+      style: {
+        strokeColor: connectorColor,
+        fill: connectorColor,
+        strokeWidth: 8,
+      },
+      targetDecorator: {
+        style: {
+          fill: connectorColor,
+          strokeColor: connectorColor,
+          strokeWidth: 7
+        },
+        height: 5,
+        width: 2
+      }
+    }
     return obj
   }
 
+  // node ports
   public ports: PointPortModel[] = [
     { id: 'port1', offset: { x: 0, y: 0.5 } },
     { id: 'port2', offset: { x: 0.5, y: 1 } },
@@ -272,9 +297,49 @@ export class WorkflowsManagementComponent implements OnInit {
   ];
 
   public created(args: Object): void {
-    // Method to add ports through run time
-    // this.diagram.addPorts(this.diagram.nodes[0], this.ports);
+    // adding connectors between nodes
+    this.diagram.addConnector( {
+      id: 'connector',
+      sourceID: 'start',
+      targetID: 'another',
+      ...this.getDefaultConnector(),
+    })
 
+    this.diagram.addConnector( {
+      id: 'connector2',
+      sourceID: 'another',
+      targetID: 'another2',
+      ...this.getDefaultConnector(),
+    })
+    this.diagram.addConnector( {
+      id: 'connector3',
+      sourceID: 'another2',
+      targetID: 'decision1',
+      ...this.getDefaultConnector(),
+    })
+    this.diagram.addConnector( {
+      id: 'connector4',
+      sourceID: 'decision1',
+      targetID: 'another',
+      segments: this.segments,
+      annotations: [{content: 'No'}],
+      ...this.getDefaultConnector(),
+    })
+    this.diagram.addConnector( {
+      id: 'connector5',
+      sourceID: 'decision1',
+      targetID: 'process3',
+      annotations: [{content: "Yes"}],
+      ...this.getDefaultConnector(),
+    })
+    this.diagram.addConnector( {
+      id: 'connector6',
+      sourceID: 'process3',
+      targetID: 'end',
+      ...this.getDefaultConnector(),
+    })
+
+    // Method to add ports through run time
     this.diagram.nodes.forEach( node => {
       if((node.shape as any).flowShape !== 'Terminator') {
         this.diagram.addPorts(node, this.ports)
