@@ -13,6 +13,7 @@ import { ActivitiesComponent } from './pages/account/register-informations/activ
 import { UsersManagementComponent } from './pages/dashboard/users-management/users-management.component';
 import { DemandeDetailsComponent } from './components/demandes/demande-details/demande-details.component';
 import { StandbyComponent } from './pages/account/standby/standby/standby.component';
+import { AddDemandePageComponent } from './pages/dashboard/add-demande-page/add-demande-page.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,7 @@ const routes: Routes = [
         component: DemandeDetailsComponent,
       },
       { path: 'demandes/:demande_id', component: DemandeDetailsComponent },
+      { path: 'new-demande', component: AddDemandePageComponent },
       { path: 'users-management', component: UsersManagementComponent },
     ],
   },

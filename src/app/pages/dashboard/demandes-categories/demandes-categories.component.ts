@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { AddDemandeComponent } from 'src/app/components/demades/add-demande/add-demande.component';
+import { AddDemandeComponent } from 'src/app/components/demandes/add-demande/add-demande.component';
 import { UserStoreService } from 'src/app/services/user-store/user-store.service';
 import { UserWorkflowsService } from 'src/app/services/userWorkflows/user-workflows.service';
 import { AppState } from 'src/app/store/app.state';

@@ -61,7 +61,8 @@ import { foldersReducer } from './store/folders/folders.reducer';
 import { FoldersEffects } from './store/folders/folders.effects';
 import { ChatBoxComponent } from './components/chat/chat-box/chat-box.component';
 import { ChatButtonComponent } from './components/chat/chat-button/chat-button.component';
-import { AddDemandeComponent } from './components/demades/add-demande/add-demande.component';
+import { AddDemandeComponent } from './components/demandes/add-demande/add-demande.component';
+import { AddDemandePageComponent } from './pages/dashboard/add-demande-page/add-demande-page.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { AddDemandeComponent } from './components/demades/add-demande/add-demand
     ChatBoxComponent,
     ChatButtonComponent,
     AddDemandeComponent,
+    AddDemandePageComponent,
   ],
   imports: [
     BrowserModule,
