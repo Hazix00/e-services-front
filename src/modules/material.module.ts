@@ -17,6 +17,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 const materialModules: any[] = [
   MatSidenavModule,
@@ -37,6 +38,7 @@ const materialModules: any[] = [
   MatButtonToggleModule,
   MatProgressSpinnerModule,
   MatStepperModule,
+  CdkStepperModule,
 ];
 
 @NgModule({

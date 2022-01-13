@@ -1,8 +1,10 @@
 <div class="list-container" fxLayout="column" fxLayoutGap="18px">
   <app-demandes-item
     *ngFor="let folder of folders$ | async"
-    [status]="folder.status"
+    [status]="folder.state"
     [id]="folder._id"
     [workflowId]="folder.workflowId"
+    [createdAt]="formatDate(folder.createdAt)"
+    [currentStep]="folder.forms?.length - 1 || 0"
   ></app-demandes-item>
 </div>

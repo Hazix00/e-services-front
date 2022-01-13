@@ -20,8 +20,8 @@ export class DemandesCategoriesComponent implements OnInit {
 
   constructor(private readonly store: Store<AppState>) {
     this.store.select(selectUser).subscribe((user) => {
-      this.user = user;
       if (user) {
+        this.user = user;
         this.store.dispatch(fetchWorkflows({ userId: user.id }));
       }
     });

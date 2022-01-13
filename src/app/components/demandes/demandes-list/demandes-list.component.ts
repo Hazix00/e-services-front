@@ -24,4 +24,8 @@ export class DemandesListComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
+
+  formatDate(date: Date) {
+    return new Date(date).toLocaleDateString('fr-FR');
+  }
 }

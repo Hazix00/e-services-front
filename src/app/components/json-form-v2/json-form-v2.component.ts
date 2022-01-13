@@ -30,6 +30,8 @@ export class JsonFormV2Component implements OnInit {
   @Output() onSubmit = new EventEmitter();
   @Output() onPrevious = new EventEmitter();
 
+  alreadySet: boolean = false;
+
   //! STATE
   formGroup: FormGroup = this.formBuilder.group({});
   showNext: Boolean = false;
@@ -90,18 +92,38 @@ export class JsonFormV2Component implements OnInit {
       );
 
       if (input?.userValues) {
-        console.log(input.userValues);
+        // console.log(input.userValues);
         this.formGroup.controls[input._id].setValue(input?.userValues?.value);
         if (!input?.userValues?.canEdit) {
           this.formGroup.controls[input._id].disable();
         }
+        this.alreadySet = true;
       }
       // console.log('this.defaultValues', this.defaultValues);
     });
   }
 
   submit() {
+    // if (this.alreadySet) {
+    //   this.onSubmit.emit(this.formGroup.value);
+    //   // console.log(this.formGroup.value);
+    // }
+
+    if (this.alreadySet) {
+      const formValues = this.inputs.reduce((acc, curr) => {
+        if (curr?.userValues?.canEdit) {
+          acc[curr._id] = this.formGroup.value[curr._id];
+        } else {
+          acc[curr._id] = curr.userValues.value;
+        }
+        return acc;
+      }, {});
+
+      return this.onSubmit.emit(formValues);
+    }
+
     if (this.formGroup.valid) {
+      // console.log(this.formGroup.value, 'from valid');
       this.onSubmit.emit(this.formGroup.value);
     } else {
       Object.values(this.formGroup.controls).forEach((control) => {
@@ -138,7 +160,6 @@ export class JsonFormV2Component implements OnInit {
   }
 
   goPrev() {
-    console.log('goPrev');
     this.onPrevious.emit();
   }
 
