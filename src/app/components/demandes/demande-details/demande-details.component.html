@@ -1,7 +1,7 @@
 <mat-stepper
   *ngIf="forms.length > 0"
   [linear]="isLinear"
-  [selectedIndex]="1"
+  [selectedIndex]="selectedIndex"
   #stepper
 >
   <mat-step *ngFor="let form of forms; index as i" [stepControl]="form._id">
@@ -14,6 +14,7 @@
       (onSubmit)="onSubmit(form._id, $event, stepper)"
       [showBackBtn]="i > 0"
       [showSaveBtn]="true"
+      (onPrevious)="goBack(stepper)"
     ></app-json-form-v2>
     <!-- <div>
       <button *ngIf="i > 0" (click)="goBack(stepper)" mat-button>Back</button>
@@ -21,6 +22,3 @@
     </div> -->
   </mat-step>
 </mat-stepper>
-
-
-

@@ -31,8 +31,9 @@ export class AuthEffects {
         return from(this.authService.authenticate()).pipe(
           // Take the returned value and return a new success action containing the todos
           mergeMap((response: any) => {
-            const user = response.data;
-            return [authenticateUserSuccess(), setUser({ user: response })];
+            const user = response.user;
+            user.publicUrls = response.publicUrls;
+            return [authenticateUserSuccess(), setUser({ user })];
           }),
           // Or... if it errors return a new failure action containing the error
           catchError((error) => of(authenticateUserFailure({ error })))

@@ -20,8 +20,8 @@
     </div>
     <span class="separator"></span>
     <div class="client" fxFlex="20.01953125">
-      <img src="../../../../assets/img/img-200x200.png" alt="" />
-      <span>Client</span>
+      <img src="{{ user?.publicUrls?.urls[0] }}" alt="" />
+      <span>{{ user?.userObject?.realm }}</span>
     </div>
     <span class="separator"></span>
     <div class="name" fxFlex="20.01953125">Nom de demande ou médicament</div>
@@ -29,8 +29,8 @@
     <div class="user-infos" fxFlex="18.06640625">
       <mat-icon>person_outline</mat-icon>
       <div>
-        <div>Crée par: User Name</div>
-        <div>Crée le: 14/10/2021</div>
+        <div>Crée par: {{ user?.userObject?.firstName }}</div>
+        <div>Crée le: {{ createdAt }}</div>
       </div>
     </div>
     <span class="separator"></span>
@@ -81,9 +81,9 @@
 </div>
 
 <div class="admin-progress-bar" fxLayout="row" fxLayoutGap="4px">
-  <div fxFlex class="step_1"></div>
-  <div fxFlex class="step_2"></div>
-  <div fxFlex class="step_3"></div>
-  <div fxFlex class="step_4"></div>
-  <div fxFlex class="step_5"></div>
+  <div
+    *ngFor="let form of allWorkflowSteps; index as i"
+    fxFlex
+    class="{{ currentStep >= i ? 'active' : '' }}"
+  ></div>
 </div>

@@ -18,6 +18,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 const materialModules: any[] = [
   MatSidenavModule,
@@ -39,6 +40,7 @@ const materialModules: any[] = [
   MatProgressSpinnerModule,
   MatStepperModule,
   MatTabsModule,
+  CdkStepperModule,
 ];
 
 @NgModule({

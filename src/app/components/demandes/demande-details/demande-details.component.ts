@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { ActivatedRoute } from '@angular/router';
 import { WorkflowsService } from 'src/app/services/workflows/workflows.service';
@@ -9,11 +9,13 @@ import { selectuserInfos } from 'src/app/store/user/user.selectors';
 import { UserFoldersService } from 'src/app/services/userFolders/user-folders.service';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-demande-details',
   templateUrl: './demande-details.component.html',
   styleUrls: ['./demande-details.component.scss'],
+  // providers: [{ provide: CdkStepper, useExisting: DemandeDetailsComponent }],
 })
 export class DemandeDetailsComponent implements OnInit {
   infosOpen = false;
@@ -28,6 +30,11 @@ export class DemandeDetailsComponent implements OnInit {
   isLinear = true;
   userValues: any[] = [];
 
+  @ViewChild('stepper') private myStepper!: MatStepper;
+
+  @ViewChild('stepper')
+  cdkStepper!: CdkStepper;
+
   constructor(
     private readonly workflowService: WorkflowsService,
     private readonly folderService: UserFoldersService,
@@ -35,6 +42,7 @@ export class DemandeDetailsComponent implements OnInit {
     private readonly formService: FormService,
     private readonly store: Store<AppState>
   ) {
+    // super();
     this.route.params.subscribe((data: any) => {
       const { id, workflowId } = data;
       if (id && workflowId) {
@@ -53,6 +61,14 @@ export class DemandeDetailsComponent implements OnInit {
             tap((formsResponse) => {
               if (formsResponse.statusCode === 200) {
                 this.forms = formsResponse.data;
+                const index = this.forms.findIndex(
+                  (form: any) => form._id === this.folder.currentStep
+                );
+                if (index > -1) {
+                  this.selectedIndex = index;
+                  // console.log('this.selectedIndex');
+                  // console.log(this.selectedIndex);
+                }
                 this.loading = false;
                 this.forms = this.forms.map((form: any) => {
                   const forms = this.folder?.forms || [];
@@ -91,18 +107,27 @@ export class DemandeDetailsComponent implements OnInit {
     });
   }
 
+  selectStepByIndex(index: number): void {
+    this.selectedIndex = index;
+    console.log('succjhjhhgjess');
+  }
+
   ngOnInit() {}
 
   onSubmit(formId: string, values: any, stepper: MatStepper) {
-    console.log(values, stepper);
-    // stepper.next();
     if (!this.user) return;
     values.userId = this.user.id;
     values.folderId = this.folderId;
     this.formService.submitForm(formId, values).subscribe({
       next: (response) => {
+        // stepper.next();
+        console.log(this.selectedIndex);
         if (response.statusCode === 201) {
-          stepper.next();
+          console.log('success');
+          // stepper._selectedIndex = 2;
+          console.log(this.myStepper);
+          //this.myStepper.selectedIndex = 2;
+          this.cdkStepper.next();
         }
       },
       error: (err) => {
@@ -120,7 +145,6 @@ export class DemandeDetailsComponent implements OnInit {
   }
 
   goBack(stepper: MatStepper) {
-    // console.log(stepper);
     stepper.previous();
   }
 }

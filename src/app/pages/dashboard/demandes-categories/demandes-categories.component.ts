@@ -25,8 +25,8 @@ export class DemandesCategoriesComponent implements OnInit {
     public dialog: MatDialog
     ) {
     this.store.select(selectUser).subscribe((user) => {
-      this.user = user;
       if (user) {
+        this.user = user;
         this.store.dispatch(fetchWorkflows({ userId: user.id }));
       }
     });

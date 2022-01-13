@@ -9,6 +9,7 @@
         margin-right: 7px;
       }
     }
+
     img {
       width: 23px;
       height: 20px;
@@ -16,7 +17,7 @@
       margin-right: 7px;
     }
 
-    > div {
+    >div {
       display: flex;
       align-items: center;
       padding: 10px;
@@ -31,23 +32,29 @@
       margin-right: 7px;
     }
 
-    .user-infos,.time-progress {
+    .user-infos,
+    .time-progress {
       mat-icon {
         font-size: 18px;
         top: 0px;
       }
     }
+
     .time-progress {
       mat-progress-spinner {
         margin: auto 0;
         margin-left: 20px;
       }
+
       .days {
         color: #55A4CE;
       }
+
       .time-progress-spinner {
         color: #55A4CE;
-        ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+
+        ::ng-deep .mat-progress-spinner circle,
+        .mat-spinner circle {
           stroke: #55A4CE !important;
         }
       }
@@ -58,12 +65,14 @@
         position: relative;
         top: -3px;
       }
+
       .mat-icon {
         color: #BFBFBF !important;
         font-size: 12px;
       }
     }
   }
+
   button[type="menu"] {
     color: #BFBFBF !important;
   }
@@ -71,24 +80,31 @@
 
 .loop {
   color: #1B478E !important;
+
   .icon {
     background: #1B478E !important;
   }
 }
+
 .done {
   color: #15A10B !important;
+
   .icon {
     background: #15A10B !important;
   }
 }
+
 .do_disturb {
   color: #D51111 !important;
+
   .icon {
     background: #D51111 !important;
   }
 }
+
 .pause_circle_outline {
   color: #FFBB00 !important;
+
   .icon {
     background: #FFBB00 !important;
   }
@@ -103,16 +119,19 @@
   border-radius: 0px 0px 28px 28px;
   z-index: 0;
   padding: 5px 10px;
-  > div > span {
+
+  >div>span {
     margin-right: .3125rem;
   }
 }
+
 .details-open {
   border-radius: 28px 28px 0 0 !important;
 }
 
 .btn {
   font-size: 6px;
+
   .mat-icon {
     font-size: 15px;
     position: relative;
@@ -123,9 +142,16 @@
 .admin-progress-bar {
   margin-top: 5px;
   padding: 0 20px;
-  > div {
+
+  >div {
     height: 5px;
     background-color: #BCE1A0;
+    border-radius: 5px;
+  }
+
+  >div.active {
+    height: 5px;
+    background-color: red;
     border-radius: 5px;
   }
 }
