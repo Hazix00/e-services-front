@@ -61,6 +61,7 @@ import { foldersReducer } from './store/folders/folders.reducer';
 import { FoldersEffects } from './store/folders/folders.effects';
 import { ChatBoxComponent } from './components/chat/chat-box/chat-box.component';
 import { ChatButtonComponent } from './components/chat/chat-button/chat-button.component';
+import { AddDemandeComponent } from './components/demades/add-demande/add-demande.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { ChatButtonComponent } from './components/chat/chat-button/chat-button.c
     JsonFormV2Component,
     ChatBoxComponent,
     ChatButtonComponent,
+    AddDemandeComponent,
   ],
   imports: [
     BrowserModule,

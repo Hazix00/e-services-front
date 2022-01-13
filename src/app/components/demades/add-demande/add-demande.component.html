@@ -1,0 +1,53 @@
+<div class="new-demande" fxLayout="column">
+  <div class="new-demande__head">
+    <h1 class="new-demande__head__title">MERCI DE SÉLECTIONNER UN WORKFLOW DOSSIER</h1>
+  </div>
+  <div class="new-demande__container">
+    <div class="new-demande__controls"
+      fxLayout="row"
+      fxLayoutAlign="space-around center"
+      >
+      <mat-form-field fxFlex="43" appearance="fill">
+        <mat-label>Recherche</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field fxFlex="43" appearance="fill">
+        <mat-label>Famille</mat-label>
+        <mat-select>
+          <mat-select-trigger> </mat-select-trigger>
+          <mat-option value="Option 1">
+            Option 1
+          </mat-option>
+          <mat-option value="Option 2">
+            Option 2
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div class="new-demande__workflows">
+      <ng-container *ngFor="let item of [1,2,3,4,5]; let odd=odd; let last=last" >
+        <div class="new-demande__workflows__item {{ odd ? 'new-demande__workflows__item--active': '' }}"
+          fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+            <span class="icon icon-Icon_ionic-ios-folder-open"></span>
+            <span class="new-demande__workflows__item__id">D46</span>
+          </div>
+          <span class="separator"></span>
+          <div  class="new-demande__workflows__item__title">
+            <span>N. D. pharmaceutique usage humain Cat. 1</span>
+          </div>
+        </div>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </ng-container>
+    </div>
+  </div>
+  <div class="" fxLayout="row" fxLayoutAlign="center center">
+    <button class="btn">Suivant</button>
+  </div>
+</div>
+
+<button class="close" (click)="close()">
+</button>

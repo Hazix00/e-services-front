@@ -21,7 +21,8 @@ export class DemandesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private readonly store: Store<AppState>
+    private readonly store: Store<AppState>,
+
   ) {}
 
   ngOnInit(): void {
