@@ -14,6 +14,10 @@ export class AddDemandeComponent implements OnInit {
   ) {}
 
   onNoClick(): void {
+    this.close();
+  }
+
+  close() {
     this.dialogRef.close();
   }
 

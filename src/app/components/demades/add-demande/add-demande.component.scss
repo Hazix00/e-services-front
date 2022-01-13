@@ -6,6 +6,7 @@ h4 {
 }
 .btn {
   padding: 12px;
+  width: 100%;
 }
 
 $icon-size: 18px;
@@ -13,6 +14,97 @@ $icon-size: 18px;
   @include svg-icon(#B0B0B0, $icon-size);
 }
 
-.workflow {
-  height: 40px;
+.new-demande {
+  &__head {
+    text-align: center;
+    margin: auto;
+    width: 60%;
+    &__title {
+      font: normal normal bold 1rem Montserrat;
+      letter-spacing: 1.68px;
+      color: #1B478E;
+      text-transform: uppercase;
+    }
+  }
+  &__container {
+    box-shadow: 0px 0px 11px #9E9E9E61;
+    border: 1px solid #79D4DC;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  &__controls {
+    // padding: 0 10px;
+    border-bottom: 1px solid #79D4DC;
+    border-radius: 20px 20px 0px 0px;
+    padding-bottom: 10px;
+    button {
+      color: #1B478E;
+    }
+  }
+
+  &__workflows {
+
+    &__item {
+
+      height: 40px;
+
+      &--active {
+        background-color: #BDF3F8;
+        .icon-Icon_ionic-ios-folder-open {
+          background: #00C2D1;
+        }
+        .new-demande__workflows__item__title {
+          color: #1B478E;
+        }
+      }
+
+      &__id {
+        color: #1B478E;
+        font-size: .625rem;
+      }
+
+      &__title {
+        font: normal normal medium .75rem Montserrat;
+        letter-spacing: -0.08px;
+        color: #656565;
+      }
+    }
+  }
+}
+
+.close {
+	overflow: hidden;
+	position: absolute;
+  top: 10px;
+  right: 10px;
+	border: none;
+	padding: 0;
+	width: 2em; height: 2em;
+	border-radius: 50%;
+	background: transparent;
+	color: #1da1f2;
+	font: inherit;
+	text-indent: 100%;
+	cursor: pointer;
+
+	&:focus {
+		outline: solid 0 transparent;
+		box-shadow: 0 0 0 2px #8ed0f9
+	}
+
+	&:hover {
+		background: rgba(29, 161, 142, .1)
+	}
+
+	&:before, &:after {
+		position: absolute;
+		top: 15%; left: calc(50% - .0625em);
+		width: .125em; height: 70%;
+		border-radius: .125em;
+		transform: rotate(45deg);
+		background: currentcolor;
+		content: ''
+	}
+
+	&:after { transform: rotate(-45deg); }
 }
